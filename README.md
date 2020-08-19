@@ -1,6 +1,6 @@
-#LA Referencia OAI-PMH Provider
+# LA Referencia OAI-PMH Provider#
 
-##Install
+## Install
 
 1. Clone/download this repository
 
@@ -12,11 +12,11 @@ $ ./build.sh
 
 3. Edit config files
 
-- config/application.properties
+> - config/application.properties
 
-- config/xoai.config
+> - config/xoai.config
 
-- oai-pmh.conf
+> - oai-pmh.conf
 
 ## Run
 
@@ -32,5 +32,7 @@ $ ./oai-pmh.jar
 $ sudo ln -s /path/to/oai-pmh.jar /etc/init.d/oai-pmh
 $ sudo /etc/init.d/oai-pmh start
 ``` 
+
+- Navigate to http://host:port/ 
 
 

@@ -18,6 +18,14 @@ $ ./build.sh
 
 > - oai-pmh.conf
 
+## Configure Solr Core
+
+1. Copy oai core ( solr.core/oai ) to a compatible Solr installation ( tested with 6.6 )
+
+2. Restart Solr server
+
+*Note: a Docker solr container with preconfigured oai core is provided 
+
 ## Run
 
 - Run from bash

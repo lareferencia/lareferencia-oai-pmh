@@ -1,4 +1,4 @@
-# LA Referencia OAI-PMH Provider#
+# LA Referencia OAI-PMH Provider
 
 ## Install
 

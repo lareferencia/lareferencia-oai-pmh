@@ -21,7 +21,7 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: bash build.sh
     - name: Build install package
       run: tar cvfz oai-pmh.tgz oai-pmh.* config 
     - uses: actions/upload-artifact@v2

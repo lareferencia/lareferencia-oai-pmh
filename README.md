@@ -1,3 +1,6 @@
+![Build](https://github.com/lareferencia/lareferencia-oai-pmh/workflows/Build/badge.svg)
+
+
 # LA Referencia OAI-PMH Provider
 
 ## Install

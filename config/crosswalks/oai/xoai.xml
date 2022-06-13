@@ -9,30 +9,30 @@
 
 	Developed by DSpace @ Lyncode <dspace@lyncode.com>
  -->
-<Configuration indented="false" maxListIdentifiersSize="100" maxListRecordsSize="100"
+<Configuration indented="true" maxListIdentifiersSize="100" maxListRecordsSize="100"
                maxListSetsSize="100" stylesheet="xslt/style.xsl"
                xmlns="http://www.lyncode.com/XOAIConfiguration">
 
     <Contexts>
-        <Context baseurl="request" name="Default Context">
+        <Context baseurl="oai" name="Default Context">
             <!-- Restrict access to hidden items by default -->
             <!-- Filter ref="defaultFilter" /-->
 
             <Format ref="oaidc"/>
-            <Format ref="mets"/>
-            <Format ref="xoai"/>
-            <Format ref="didl"/>
-            <Format ref="dim"/>
-            <Format ref="ore"/>
+            <!--<Format ref="mets"/>-->
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
             <Format ref="rdf"/>
-            <Format ref="etdms"/>
+            <!--<Format ref="etdms"/>-->
             <Format ref="mods"/>
             <Format ref="qdc"/>
             <Format ref="marc"/>
-            <Format ref="uketd_dc"/>
+            <!--<Format ref="uketd_dc"/>-->
             <!--<Format ref="junii2" />-->
             <Description>
-                This is the default context of the LAReferencia data provider.
+                This is the default context of the Redalyc data provider.
             </Description>
         </Context>
 
@@ -52,8 +52,8 @@
             <Set ref="driverSet"/>
             <!-- Metadata Formats -->
             <Format ref="oaidc"/>
-            <Format ref="mets"/>
-            <Format ref="didl"/>
+            <!--<Format ref="mets"/>-->
+            <!--<Format ref="didl"/>-->
             <Description>
                 This contexts complies with Driver rules.
             </Description>
@@ -77,7 +77,7 @@
             <Set ref="openaireSet"/>
             <!-- Metadata Formats -->
             <Format ref="oaidc"/>
-            <Format ref="mets"/>
+            <!--<Format ref="mets"/>-->
             <Description>
                 This contexts complies with OpenAIRE rules.
             </Description>
@@ -93,8 +93,8 @@
             <!-- Just an alias, in fact it returns all items within the driver context -->
             <!-- Metadata Formats -->
             <Format ref="oaidc"/>
-            <Format ref="xoai"/>
-            <Format ref="mets"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="mets"/>-->
             <Description>
                 This contexts lists master and doctoral thesis types
             </Description>
@@ -110,10 +110,10 @@
             <!-- Just an alias, in fact it returns all items within the driver context -->
             <!-- Metadata Formats -->
             <Format ref="oaidc"/>
-            <Format ref="xoai"/>
-            <Format ref="mets"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="mets"/>-->
             <Description>
-               LAReferencia Accepted Doctypes Context
+               Redalyc Accepted Doctypes Context
             </Description>
         </Context>
         
@@ -138,7 +138,1881 @@
             </Description>
         </Context>		
         
+        <!--**************************Contexts Redalyc - Paises**************************-->
+        <Context baseurl="mexico" name="México">
+            <Filter ref="mexicoFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from countries: México
+            </Description>
+        </Context>
+
+        <Context baseurl="argentina" name="Argentina">
+            <Filter ref="argentinaFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from countries: Argentina
+            </Description>
+        </Context>
+
+        <Context baseurl="costarica" name="Costa Rica">
+            <Filter ref="costaricaFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from countries: Costa Rica
+            </Description>
+        </Context>
+        <!--**************************Contexts Redalyc - Paises**************************-->
+
+        <!--**************************Contexts Redalyc - Instituciones**************************-->
+        <Context baseurl="unam" name="Universidad Nacional Autónoma de México">
+            <Filter ref="unamFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Nacional Autónoma de México
+            </Description>
+        </Context>
+
+        <Context baseurl="uam" name="Universidad Autónoma Metropolitana">
+            <Filter ref="uamFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma Metropolitana
+            </Description>
+        </Context>
+
+        <Context baseurl="ipn" name="Instituto Politécnico Nacional">
+            <Filter ref="ipnFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Politécnico Nacional
+            </Description>
+        </Context>
+
+        <Context baseurl="cp" name="Colegio de Postgraduados">
+            <Filter ref="cpFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Colegio de Postgraduados
+            </Description>
+        </Context>
+
+        <Context baseurl="uaemex" name="Universidad Autónoma del Estado de México">
+            <Filter ref="uaemexFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma del Estado de México
+            </Description>
+        </Context>
+
+        <Context baseurl="udeg" name="Universidad de Guadalajara">
+            <Filter ref="udegFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad de Guadalajara
+            </Description>
+        </Context>
+
+        <Context baseurl="inifap" name="Instituto Nacional de Investigaciones Forestales, Agrícolas y Pecuarias">
+            <Filter ref="inifapFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Nacional de Investigaciones Forestales, Agrícolas y Pecuarias
+            </Description>
+        </Context>
+
+        <Context baseurl="uac" name="Universidad Autónoma Chapingo">
+            <Filter ref="uacFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma Chapingo
+            </Description>
+        </Context>
+
+        <Context baseurl="colmex" name="El Colegio de México, A.C.">
+            <Filter ref="colmexFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: El Colegio de México, A.C.
+            </Description>
+        </Context>
+
+        <Context baseurl="imss" name="Instituto Mexicano del Seguro Social">
+            <Filter ref="imssFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Mexicano del Seguro Social
+            </Description>
+        </Context>
+
+        <Context baseurl="uv" name="Universidad Veracruzana">
+            <Filter ref="uvFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Veracruzana
+            </Description>
+        </Context>
+
+        <Context baseurl="uanl" name="Universidad Autónoma de Nuevo León">
+            <Filter ref="uanlFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de Nuevo León
+            </Description>
+        </Context>
+
+        <Context baseurl="buap" name="Benemérita Universidad Autónoma de Puebla">
+            <Filter ref="buapFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Benemérita Universidad Autónoma de Puebla
+            </Description>
+        </Context>
+
+        <Context baseurl="itesm" name="Instituto Tecnológico y de Estudios Superiores de Monterrey">
+            <Filter ref="itesmFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Tecnológico y de Estudios Superiores de Monterrey
+            </Description>
+        </Context>
+
+        <Context baseurl="uabc" name="Universidad Autónoma de Baja California">
+            <Filter ref="uabcFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de Baja California
+            </Description>
+        </Context>
+
+        <Context baseurl="umsnh" name="Universidad Michoacana de San Nicolás de Hidalgo">
+            <Filter ref="umsnhFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Michoacana de San Nicolás de Hidalgo
+            </Description>
+        </Context>
+
+        <Context baseurl="ug" name="Universidad de Guanajuato">
+            <Filter ref="ugFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad de Guanajuato
+            </Description>
+        </Context>
+
+        <Context baseurl="uady" name="Universidad Autónoma de Yucatán">
+            <Filter ref="uadyFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de Yucatán
+            </Description>
+        </Context>
+
+        <Context baseurl="insp" name="Instituto Nacional de Salud Pública">
+            <Filter ref="inspFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Nacional de Salud Pública
+            </Description>
+        </Context>
+
+        <Context baseurl="uaslp" name="Universidad Autónoma de San Luis Potosí">
+            <Filter ref="uaslpFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de San Luis Potosí
+            </Description>
+        </Context>
+
+        <Context baseurl="ecosur" name="El Colegio de la Frontera Sur">
+            <Filter ref="ecosurFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: El Colegio de la Frontera Sur
+            </Description>
+        </Context>
+
+        <Context baseurl="uat" name="Universidad Autónoma de Tamaulipas">
+            <Filter ref="uatFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de Tamaulipas
+            </Description>
+        </Context>
+
+        <Context baseurl="uia" name="Universidad Iberoamericana, Ciudad de México">
+            <Filter ref="uiaFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Iberoamericana, Ciudad de México
+            </Description>
+        </Context>
+
+        <Context baseurl="uaem" name="Universidad Autónoma del Estado de Morelos">
+            <Filter ref="uaemFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma del Estado de Morelos
+            </Description>
+        </Context>
+
+        <Context baseurl="uaeh" name="Universidad Autónoma del Estado de Hidalgo">
+            <Filter ref="uaehFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma del Estado de Hidalgo
+            </Description>
+        </Context>
+
+        <Context baseurl="inecol" name="Instituto de Ecología, A.C.">
+            <Filter ref="inecolFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto de Ecología, A.C.
+            </Description>
+        </Context>
+
+        <Context baseurl="uson" name="Universidad de Sonora">
+            <Filter ref="usonFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad de Sonora
+            </Description>
+        </Context>
+
+        <Context baseurl="ciesas" name="Centro de Investigaciones y Estudios Superiores en Antropología Social">
+            <Filter ref="ciesasFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Centro de Investigaciones y Estudios Superiores en Antropología Social
+            </Description>
+        </Context>
+
+        <Context baseurl="colef" name="El Colegio de la Frontera Norte, A.C.">
+            <Filter ref="colefFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: El Colegio de la Frontera Norte, A.C.
+            </Description>
+        </Context>
+
+        <Context baseurl="ujat" name="Universidad Juárez Autónoma de Tabasco">
+            <Filter ref="ujatFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Juárez Autónoma de Tabasco
+            </Description>
+        </Context>
+
+        <Context baseurl="inah" name="Instituto Nacional de Antropología e Historia">
+            <Filter ref="inahFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Nacional de Antropología e Historia
+            </Description>
+        </Context>
+
+        <Context baseurl="cinvestav" name="Centro de Investigación y de Estudios Avanzados del IPN">
+            <Filter ref="cinvestavFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Centro de Investigación y de Estudios Avanzados del IPN
+            </Description>
+        </Context>
+
+        <Context baseurl="uaq" name="Universidad Autónoma de Querétaro">
+            <Filter ref="uaqFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de Querétaro
+            </Description>
+        </Context>
+
+        <Context baseurl="uacj" name="Universidad Autónoma de Ciudad Juárez">
+            <Filter ref="uacjFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de Ciudad Juárez
+            </Description>
+        </Context>
+
+        <Context baseurl="uas" name="Universidad Autónoma de Sinaloa">
+            <Filter ref="uasFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de Sinaloa
+            </Description>
+        </Context>
+
+        <Context baseurl="ucol" name="Universidad de Colima">
+            <Filter ref="ucolFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad de Colima
+            </Description>
+        </Context>
+
+        <Context baseurl="uaaan" name="Universidad Autónoma Agraria Antonio Narro">
+            <Filter ref="uaaanFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma Agraria Antonio Narro
+            </Description>
+        </Context>
+
+        <Context baseurl="uaa" name="Universidad Autónoma de Aguascalientes">
+            <Filter ref="uaaFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de Aguascalientes
+            </Description>
+        </Context>
+
+        <Context baseurl="uach" name="Universidad Autónoma de Chihuahua">
+            <Filter ref="uachFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de Chihuahua
+            </Description>
+        </Context>
+
+        <Context baseurl="ciad" name="Centro de Investigación en Alimentación y Desarrollo, A.C.">
+            <Filter ref="ciadFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Centro de Investigación en Alimentación y Desarrollo, A.C.
+            </Description>
+        </Context>
+
+        <Context baseurl="uaz" name="Universidad Autónoma de Zacatecas">
+            <Filter ref="uazFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de Zacatecas
+            </Description>
+        </Context>
+
+        <Context baseurl="inp" name="Instituto Nacional de Pediatría">
+            <Filter ref="inpFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Nacional de Pediatría
+            </Description>
+        </Context>
+
+        <Context baseurl="cibnor" name="Centro de Investigaciones Biológicas del Noroeste, S.C.">
+            <Filter ref="cibnorFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Centro de Investigaciones Biológicas del Noroeste, S.C.
+            </Description>
+        </Context>
+
+        <Context baseurl="ssa" name="Secretaría de Salud">
+            <Filter ref="ssaFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Secretaría de Salud
+            </Description>
+        </Context>
+
+        <Context baseurl="issste" name="Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado">
+            <Filter ref="isssteFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado
+            </Description>
+        </Context>
+
+        <Context baseurl="uacm" name="Universidad Autónoma de la Ciudad de México">
+            <Filter ref="uacmFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de la Ciudad de México
+            </Description>
+        </Context>
+
+        <Context baseurl="cicese" name="Centro de Investigación Científica y de Educación Superior de Ensenada">
+            <Filter ref="ciceseFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Centro de Investigación Científica y de Educación Superior de Ensenada
+            </Description>
+        </Context>
+
+        <Context baseurl="colmich" name="El Colegio de Michoacán, A.C">
+            <Filter ref="colmichFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: El Colegio de Michoacán, A.C
+            </Description>
+        </Context>
+
+        <Context baseurl="upn" name="Universidad Pedagógica Nacional">
+            <Filter ref="upnFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Pedagógica Nacional
+            </Description>
+        </Context>
+
+        <Context baseurl="ujed" name="Universidad Juárez del Estado de Durango">
+            <Filter ref="ujedFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Juárez del Estado de Durango
+            </Description>
+        </Context>
+
+        <Context baseurl="uagro" name="Universidad Autónoma de Guerrero">
+            <Filter ref="uagroFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de Guerrero
+            </Description>
+        </Context>
+
+        <Context baseurl="uan" name="Universidad Autónoma de Nayarit">
+            <Filter ref="uanFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de Nayarit
+            </Description>
+        </Context>
+
+        <Context baseurl="uadec" name="Universidad Autónoma de Coahuila">
+            <Filter ref="uadecFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de Coahuila
+            </Description>
+        </Context>
+
+        <Context baseurl="unach" name="Universidad Autónoma de Chiapas">
+            <Filter ref="unachFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de Chiapas
+            </Description>
+        </Context>
+
+        <Context baseurl="cide" name="Centro de Investigación y Docencia Económicas, A.C.">
+            <Filter ref="cideFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Centro de Investigación y Docencia Económicas, A.C.
+            </Description>
+        </Context>
+
+        <Context baseurl="inaoe" name="Instituto Nacional de Astrofísica, Óptica y Electrónica">
+            <Filter ref="inaoeFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Nacional de Astrofísica, Óptica y Electrónica
+            </Description>
+        </Context>
+
+        <Context baseurl="up" name="Universidad Panamericana">
+            <Filter ref="upFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Panamericana
+            </Description>
+        </Context>
+
+        <Context baseurl="uabcs" name="Universidad Autónoma de Baja California Sur">
+            <Filter ref="uabcsFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de Baja California Sur
+            </Description>
+        </Context>
+
+         <Context baseurl="iteso" name="Instituto Tecnológico y de Estudios Superiores de Occidente">
+            <Filter ref="itesoFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Tecnológico y de Estudios Superiores de Occidente
+            </Description>
+        </Context>
+
+        <Context baseurl="unicach" name="Universidad de Ciencias y Artes de Chiapas">
+            <Filter ref="unicachFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad de Ciencias y Artes de Chiapas
+            </Description>
+        </Context>
+
+        <Context baseurl="uqroo" name="Universidad de Quintana Roo">
+            <Filter ref="uqrooFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad de Quintana Roo
+            </Description>
+        </Context>
+
+        <Context baseurl="upaep" name="Universidad Popular Autónoma del Estado de Puebla">
+            <Filter ref="upaepFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Popular Autónoma del Estado de Puebla
+            </Description>
+        </Context>
+
+        <Context baseurl="flacso" name="Facultad Latinoamericana de Ciencias Sociales">
+            <Filter ref="flacsoFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Facultad Latinoamericana de Ciencias Sociales
+            </Description>
+        </Context>
+
+        <Context baseurl="udlap" name="Universidad de las Américas Puebla">
+            <Filter ref="udlapFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad de las Américas Puebla
+            </Description>
+        </Context>
+
+        <Context baseurl="imp" name="Instituto Mexicano del Petróleo">
+            <Filter ref="impFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Mexicano del Petróleo
+            </Description>
+        </Context>
+
+        <Context baseurl="umar" name="Universidad del Mar">
+            <Filter ref="umarFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad del Mar
+            </Description>
+        </Context>
+
+        <Context baseurl="colson" name="El Colegio de Sonora">
+            <Filter ref="colsonFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: El Colegio de Sonora
+            </Description>
+        </Context>
+
+        <Context baseurl="pp" name="Práctica Privada">
+            <Filter ref="ppFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Práctica Privada
+            </Description>
+        </Context>
+
+        <Context baseurl="cmn" name="Centro Médico Nacional Siglo XXI">
+            <Filter ref="cmnFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Centro Médico Nacional Siglo XXI
+            </Description>
+        </Context>
+
+        <Context baseurl="ita" name="Instituto Tecnológico de Aguascalientes">
+            <Filter ref="itaFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Tecnológico de Aguascalientes
+            </Description>
+        </Context>
+
+        <Context baseurl="itam" name="Instituto Tecnológico Autónomo de México">
+            <Filter ref="itamFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Tecnológico Autónomo de México
+            </Description>
+        </Context>
+
+        <Context baseurl="uatl" name="Universidad Autónoma de Tlaxcala">
+            <Filter ref="uatlFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de Tlaxcala
+            </Description>
+        </Context>
+
+        <Context baseurl="cicy" name="Centro de Investigación Científica de Yucatán">
+            <Filter ref="cicyFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Centro de Investigación Científica de Yucatán
+            </Description>
+        </Context>
+
+        <Context baseurl="itson" name="Instituto Tecnológico de Sonora">
+            <Filter ref="itsonFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Tecnológico de Sonora
+            </Description>
+        </Context>
+
+        <Context baseurl="ua" name="Universidad Anáhuac México Norte">
+            <Filter ref="uaFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Anáhuac México Norte
+            </Description>
+        </Context>
+
+        <Context baseurl="iijm" name="Instituto de Investigaciones Dr. José María Luis Mora">
+            <Filter ref="iijmFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto de Investigaciones Dr. José María Luis Mora
+            </Description>
+        </Context>
+
+        <Context baseurl="uacam" name="Universidad Autónoma de Campeche">
+            <Filter ref="uacamFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma de Campeche
+            </Description>
+        </Context>
+
+        <Context baseurl="cmq" name="El Colegio Mexiquense, A.C.">
+            <Filter ref="cmqFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: El Colegio Mexiquense, A.C.
+            </Description>
+        </Context>
+
+        <Context baseurl="colsan" name="El Colegio de San Luis, A.C.">
+            <Filter ref="colsanFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: El Colegio de San Luis, A.C.
+            </Description>
+        </Context>
+
+        <Context baseurl="ulsa" name="Universidad La Salle">
+            <Filter ref="ulsaFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad La Salle
+            </Description>
+        </Context>
+
+         <Context baseurl="tnm" name="Tecnológico Nacional de México">
+            <Filter ref="tnmFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Tecnológico Nacional de México
+            </Description>
+        </Context>
+
+        <Context baseurl="himfg" name="Instituto Nacional de Salud 'HIM' 'Federico Gómez'">
+            <Filter ref="himfgFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Nacional de Salud 'HIM' 'Federico Gómez'
+            </Description>
+        </Context>
+
+        <Context baseurl="udem" name="Universidad de Monterrey">
+            <Filter ref="udemFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad de Monterrey
+            </Description>
+        </Context>
+
+        <Context baseurl="itco" name="Instituto Tecnológico de Conkal">
+            <Filter ref="itcoFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Tecnológico de Conkal
+            </Description>
+        </Context>
+
+        <Context baseurl="itc" name="Instituto Tecnológico de Celaya">
+            <Filter ref="itcFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Tecnológico de Celaya
+            </Description>
+        </Context>
+
+        <Context baseurl="ipicyt" name="Instituto Potosino de Investigación Científica y Tecnológica A.C.">
+            <Filter ref="ipicytFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Potosino de Investigación Científica y Tecnológica A.C.
+            </Description>
+        </Context>
+
+        <Context baseurl="uabjo" name="Universidad Autónoma Benito Juárez de Oaxaca">
+            <Filter ref="uabjotFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma Benito Juárez de Oaxaca
+            </Description>
+        </Context>
+
+        <Context baseurl="inr" name="Instituto Nacional de Rehabilitación">
+            <Filter ref="inrFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Nacional de Rehabilitación
+            </Description>
+        </Context>
+
+        <Context baseurl="cmnn" name="Centro Médico Nacional 20 de Noviembre">
+            <Filter ref="cmnnFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Centro Médico Nacional 20 de Noviembre
+            </Description>
+        </Context>
         
+        <Context baseurl="uaim" name="Universidad Autónoma Indígena de México">
+            <Filter ref="uaimFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma Indígena de México
+            </Description>
+        </Context>
+
+        <Context baseurl="unacar" name="Universidad Autónoma del Carmen">
+            <Filter ref="unacarFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad Autónoma del Carmen
+            </Description>
+        </Context>
+
+        <Context baseurl="unpa" name="Universidad del Papaloapan">
+            <Filter ref="unpaFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad del Papaloapan
+            </Description>
+        </Context>
+
+        <Context baseurl="uvm" name="Universidad del Valle de México">
+            <Filter ref="uvmFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad del Valle de México
+            </Description>
+        </Context>
+
+        <Context baseurl="itt" name="Instituto Tecnológico de Torreón">
+            <Filter ref="ittFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Tecnológico de Torreón
+            </Description>
+        </Context>
+
+        <Context baseurl="cimav" name="Centro de Investigación en Materiales Avanzados">
+            <Filter ref="cimavFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Centro de Investigación en Materiales Avanzados
+            </Description>
+        </Context>
+
+        <Context baseurl="itvo" name="Instituto Tecnológico del Valle de Oaxaca">
+            <Filter ref="itvoFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Tecnológico del Valle de Oaxaca
+            </Description>
+        </Context>
+
+        <Context baseurl="usb" name="Universidad De La Salle Bajío">
+            <Filter ref="usbFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Universidad De La Salle Bajío
+            </Description>
+        </Context>
+
+        <Context baseurl="coljal" name="El Colegio de Jaliscoo">
+            <Filter ref="coljalFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: El Colegio de Jalisco
+            </Description>
+        </Context>
+
+        <Context baseurl="isceem" name="Instituto Superior de Ciencias de la Educación del Estado de México">
+            <Filter ref="isceemFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Superior de Ciencias de la Educación del Estado de México
+            </Description>
+        </Context>
+
+        <Context baseurl="cio" name="Centro de Investigaciones en Óptica">
+            <Filter ref="cioFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Centro de Investigaciones en Óptica
+            </Description>
+        </Context>
+
+        <Context baseurl="ifrn" name="Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte">
+            <Filter ref="ifrnFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from institutions: Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte
+            </Description>
+        </Context>
+        <!--**************************Contexts Redalyc - Instituciones**************************-->
     </Contexts>
 
 
@@ -149,50 +2023,50 @@
             <Namespace>http://www.openarchives.org/OAI/2.0/oai_dc/</Namespace>
             <SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
         </Format>
-        <Format id="mets">
+        <!--<Format id="mets">
             <Prefix>mets</Prefix>
             <XSLT>metadataFormats/mets.xsl</XSLT>
             <Namespace>http://www.loc.gov/METS/</Namespace>
             <SchemaLocation>http://www.loc.gov/standards/mets/mets.xsd</SchemaLocation>
-        </Format>
+        </Format>-->
         <!-- Shows the XOAI internal generated XML -->
-        <Format id="xoai">
+        <!--<Format id="xoai">
             <Prefix>xoai</Prefix>
             <XSLT>metadataFormats/xoai.xsl</XSLT>
             <Namespace>http://www.lyncode.com/xoai</Namespace>
             <SchemaLocation>http://www.lyncode.com/schemas/xoai.xsd</SchemaLocation>
-        </Format>
-        <Format id="didl">
+        </Format>-->
+        <!--<Format id="didl">
             <Prefix>didl</Prefix>
             <XSLT>metadataFormats/didl.xsl</XSLT>
             <Namespace>urn:mpeg:mpeg21:2002:02-DIDL-NS</Namespace>
             <SchemaLocation>http://standards.iso.org/ittf/PubliclyAvailableStandards/MPEG-21_schema_files/did/didl.xsd
             </SchemaLocation>
-        </Format>
-        <Format id="dim">
+        </Format>-->
+        <!--<Format id="dim">
             <Prefix>dim</Prefix>
             <XSLT>metadataFormats/dim.xsl</XSLT>
             <Namespace>http://www.dspace.org/xmlns/dspace/dim</Namespace>
             <SchemaLocation>http://www.dspace.org/schema/dim.xsd</SchemaLocation>
-        </Format>
-        <Format id="ore">
+        </Format>-->
+        <!--<Format id="ore">
             <Prefix>ore</Prefix>
             <XSLT>metadataFormats/ore.xsl</XSLT>
             <Namespace>http://www.w3.org/2005/Atom</Namespace>
             <SchemaLocation>http://tweety.lanl.gov/public/schemas/2008-06/atom-tron.sch</SchemaLocation>
-        </Format>
+        </Format>-->
         <Format id="rdf">
             <Prefix>rdf</Prefix>
             <XSLT>metadataFormats/rdf.xsl</XSLT>
             <Namespace>http://www.openarchives.org/OAI/2.0/rdf/</Namespace>
             <SchemaLocation>http://www.openarchives.org/OAI/2.0/rdf.xsd</SchemaLocation>
         </Format>
-        <Format id="etdms">
+        <!--<Format id="etdms">
             <Prefix>etdms</Prefix>
             <XSLT>metadataFormats/etdms.xsl</XSLT>
             <Namespace>http://www.ndltd.org/standards/metadata/etdms/1.0/</Namespace>
             <SchemaLocation>http://www.ndltd.org/standards/metadata/etdms/1.0/etdms.xsd</SchemaLocation>
-        </Format>
+        </Format>-->
         <Format id="mods">
             <Prefix>mods</Prefix>
             <XSLT>metadataFormats/mods.xsl</XSLT>
@@ -211,13 +2085,13 @@
             <Namespace>http://www.loc.gov/MARC21/slim</Namespace>
             <SchemaLocation>http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd</SchemaLocation>
         </Format>
-        <Format id="uketd_dc">
+        <!--<Format id="uketd_dc">
             <Prefix>uketd_dc</Prefix>
             <XSLT>metadataFormats/uketd_dc.xsl</XSLT>
             <Namespace>http://naca.central.cranfield.ac.uk/ethos-oai/2.0/</Namespace>
             <SchemaLocation>http://naca.central.cranfield.ac.uk/ethos-oai/2.0/uketd_dc.xsd</SchemaLocation>
             <Filter ref="uketdDcFilter"/>
-        </Format>
+        </Format>-->
         <Format id="junii2">
             <Prefix>junii2</Prefix>
             <XSLT>metadataFormats/junii2.xsl</XSLT>
@@ -298,6 +2172,634 @@
                 <Custom ref="bitstreamAccessCondition"/>
             </Definition>
         </Filter>
+
+        <!--**************************Contexts Redalyc - Paises**************************-->
+        <Filter id="mexicoFilter">
+            <Definition>
+                <Custom ref="mexicoDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="argentinaFilter">
+            <Definition>
+                <Custom ref="argentinaDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="costaricaFilter">
+            <Definition>
+                <Custom ref="costaricaDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+        <!--**************************Contexts Redalyc - Paises**************************-->
+        
+        <!--**************************Filtro contexts Redalyc - Instituciones**************************-->
+        <Filter id="unamFilter">
+            <Definition>
+                <Custom ref="unamDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uamFilter">
+            <Definition>
+                <Custom ref="uamDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="ipnFilter">
+            <Definition>
+                <Custom ref="ipnDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="cpFilter">
+            <Definition>
+                <Custom ref="cpDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uaemexFilter">
+            <Definition>
+                <Custom ref="uaemexDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="udegFilter">
+            <Definition>
+                <Custom ref="udegDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="inifapFilter">
+            <Definition>
+                <Custom ref="inifapDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uacFilter">
+            <Definition>
+                <Custom ref="uacDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="colmexFilter">
+            <Definition>
+                <Custom ref="colmexDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="imssFilter">
+            <Definition>
+                <Custom ref="imssDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uvFilter">
+            <Definition>
+                <Custom ref="uvDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uanlFilter">
+            <Definition>
+                <Custom ref="uanlDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="buapFilter">
+            <Definition>
+                <Custom ref="buapDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="itesmFilter">
+            <Definition>
+                <Custom ref="itesmDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uabcFilter">
+            <Definition>
+                <Custom ref="uabcDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="umsnhFilter">
+            <Definition>
+                <Custom ref="umsnhDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="ugFilter">
+            <Definition>
+                <Custom ref="ugDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uadyFilter">
+            <Definition>
+                <Custom ref="uadyDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="inspFilter">
+            <Definition>
+                <Custom ref="inspDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uaslpFilter">
+            <Definition>
+                <Custom ref="uaslpDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="ecosurFilter">
+            <Definition>
+                <Custom ref="ecosurDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uatFilter">
+            <Definition>
+                <Custom ref="uatDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uiaFilter">
+            <Definition>
+                <Custom ref="uiaDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uaemFilter">
+            <Definition>
+                <Custom ref="uaemDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uaehFilter">
+            <Definition>
+                <Custom ref="uaehDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="inecolFilter">
+            <Definition>
+                <Custom ref="inecolDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="usonFilter">
+            <Definition>
+                <Custom ref="usonDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="ciesasFilter">
+            <Definition>
+                <Custom ref="ciesasDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="colefFilter">
+            <Definition>
+                <Custom ref="colefDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="ujatFilter">
+            <Definition>
+                <Custom ref="ujatDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="inahFilter">
+            <Definition>
+                <Custom ref="inahDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="cinvestavFilter">
+            <Definition>
+                <Custom ref="cinvestavDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uaqFilter">
+            <Definition>
+                <Custom ref="uaqDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uacjFilter">
+            <Definition>
+                <Custom ref="uacjDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uasFilter">
+            <Definition>
+                <Custom ref="uasDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="ucolFilter">
+            <Definition>
+                <Custom ref="ucolDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uaaanFilter">
+            <Definition>
+                <Custom ref="uaaanDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uaaFilter">
+            <Definition>
+                <Custom ref="uaaDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uachFilter">
+            <Definition>
+                <Custom ref="uachDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="ciadFilter">
+            <Definition>
+                <Custom ref="ciadDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uazFilter">
+            <Definition>
+                <Custom ref="uazDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="inpFilter">
+            <Definition>
+                <Custom ref="inpDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="cibnorFilter">
+            <Definition>
+                <Custom ref="cibnorDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="ssaFilter">
+            <Definition>
+                <Custom ref="ssaDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="isssteFilter">
+            <Definition>
+                <Custom ref="isssteDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uacmFilter">
+            <Definition>
+                <Custom ref="uacmDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="ciceseFilter">
+            <Definition>
+                <Custom ref="ciceseDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="colmichFilter">
+            <Definition>
+                <Custom ref="colmichDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="upnFilter">
+            <Definition>
+                <Custom ref="upnDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="ujedFilter">
+            <Definition>
+                <Custom ref="ujedDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uagroFilter">
+            <Definition>
+                <Custom ref="uagroDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uanFilter">
+            <Definition>
+                <Custom ref="uanDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uadecFilter">
+            <Definition>
+                <Custom ref="uadecDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="unachFilter">
+            <Definition>
+                <Custom ref="unachDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="cideFilter">
+            <Definition>
+                <Custom ref="cideDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="inaoeFilter">
+            <Definition>
+                <Custom ref="inaoeDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="upFilter">
+            <Definition>
+                <Custom ref="upDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uabcsFilter">
+            <Definition>
+                <Custom ref="uabcsDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="itesoFilter">
+            <Definition>
+                <Custom ref="itesoDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="unicachFilter">
+            <Definition>
+                <Custom ref="unicachDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uqrooFilter">
+            <Definition>
+                <Custom ref="uqrooDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="upaepFilter">
+            <Definition>
+                <Custom ref="upaepDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="flacsoFilter">
+            <Definition>
+                <Custom ref="flacsoDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="udlapFilter">
+            <Definition>
+                <Custom ref="udlapDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="impFilter">
+            <Definition>
+                <Custom ref="impDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="umarFilter">
+            <Definition>
+                <Custom ref="umarDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="colsonFilter">
+            <Definition>
+                <Custom ref="colsonDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="ppFilter">
+            <Definition>
+                <Custom ref="ppDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="cmnFilter">
+            <Definition>
+                <Custom ref="cmnDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="itaFilter">
+            <Definition>
+                <Custom ref="itaDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="itamFilter">
+            <Definition>
+                <Custom ref="itamDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uatlFilter">
+            <Definition>
+                <Custom ref="uatlDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="cicyFilter">
+            <Definition>
+                <Custom ref="cicyDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="itsonFilter">
+            <Definition>
+                <Custom ref="itsonDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uaFilter">
+            <Definition>
+                <Custom ref="uaDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="iijmFilter">
+            <Definition>
+                <Custom ref="iijmDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uacamFilter">
+            <Definition>
+                <Custom ref="uacamDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="cmqFilter">
+            <Definition>
+                <Custom ref="cmqDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="colsanFilter">
+            <Definition>
+                <Custom ref="colsanDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="ulsaFilter">
+            <Definition>
+                <Custom ref="ulsaDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="tnmFilter">
+            <Definition>
+                <Custom ref="tnmDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="himfgFilter">
+            <Definition>
+                <Custom ref="himfgDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="udemFilter">
+            <Definition>
+                <Custom ref="udemDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="itcoFilter">
+            <Definition>
+                <Custom ref="itcoDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="itcFilter">
+            <Definition>
+                <Custom ref="itcDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="ipicytFilter">
+            <Definition>
+                <Custom ref="ipicytDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uabjoFilter">
+            <Definition>
+                <Custom ref="uabjoDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="inrFilter">
+            <Definition>
+                <Custom ref="inrDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="cmnnFilter">
+            <Definition>
+                <Custom ref="cmnnDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uaimFilter">
+            <Definition>
+                <Custom ref="uaimDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="unacarFilter">
+            <Definition>
+                <Custom ref="unacarDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="unpaFilter">
+            <Definition>
+                <Custom ref="unpaDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uvmFilter">
+            <Definition>
+                <Custom ref="uvmDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="ittFilter">
+            <Definition>
+                <Custom ref="ittDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="cimavFilter">
+            <Definition>
+                <Custom ref="cimavDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="itvoFilter">
+            <Definition>
+                <Custom ref="itvoDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="usbFilter">
+            <Definition>
+                <Custom ref="usbDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="coljalFilter">
+            <Definition>
+                <Custom ref="coljalDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="isceemFilter">
+            <Definition>
+                <Custom ref="isceemDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="cioFilter">
+            <Definition>
+                <Custom ref="cioDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="ifrnFilter">
+            <Definition>
+                <Custom ref="ifrnDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+        <!--**************************Filtro contexts Redalyc - Instituciones**************************-->
         
         <CustomCondition id="authorExistsCondition">
             <Class>org.lareferencia.xoai.filter.LRMetadataExistsFilter</Class>
@@ -407,6 +2909,1154 @@
                 <string name="value">info:eu-repo/grantAgreement/EC/FP</string>
             </Configuration>
         </CustomCondition>
+
+        <!--**************************Contexts Redalyc - Paises**************************-->
+        <CustomCondition id="mexicoDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.country</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>México</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="argentinaDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.country</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>Argentina</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="costaricaDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.country</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>Costa Rica</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+        <!--**************************Contexts Redalyc - Paises**************************-->
+
+        <!--**************************Condiciones filtro contexts Redalyc - Instituciones**************************-->
+        <CustomCondition id="unamDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>15992</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uamDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14959</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="ipnDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>13537</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="cpDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>11101</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uaemexDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14939</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="udegDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>15083</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="inifapDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>13477</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uacDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>24043</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="colmexDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>11346</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="imssDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>11615</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uvDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>16147</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uanlDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14881</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="buapDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>10068</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="itesmDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14493</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uabcDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14787</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="umsnhDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>15963</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="ugDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>15086</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uadyDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14919</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="inspDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>13494</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uaslpDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14894</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="ecosurDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>11334</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uatDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14902</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uiaDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>15624</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uaemDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14942</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uaehDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14935</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="inecolDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>12863</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="usonDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>15283</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="ciesasDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>10575</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="colefDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>11331</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="ujatDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>15709</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+         <CustomCondition id="inahDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>13409</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="cinvestavDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>10555</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uaqDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14889</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uacjDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14809</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uasDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14898</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="ucolDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>15057</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uaaanDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14722</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uaaDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14781</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uachDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14805</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="ciadDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>10528</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uazDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14923</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="inpDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>13485</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="cibnorDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>23796</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="ssaDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>32190</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="isssteDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>27059</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uacmDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14872</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="ciceseDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>10524</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="colmichDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>11352</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="upnDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>16022</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="ujedDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>15713</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uagroDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14869</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uanDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14878</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uadecDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14815</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="unachDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14800</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="cideDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>10562</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="inaoeDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>13413</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="upDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>16009</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uabcsDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14791</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="itesoDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14345</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="unicachDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>15045</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uqrooDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>15268</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="upaepDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>16039</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="flacsoDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>12482</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="udlapDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>15113</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="impDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>13385</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="umarDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>15403</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="colsonDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>11394</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="ppDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>83336</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="cmnDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>11599</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="itaDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>13743</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="itamDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>13731</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uatlDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14907</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="cicyDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>10520</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="itsonDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14071</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uaDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14692</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="iijmDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>13171</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uacamDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14794</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="cmqDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>22905</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="colsanDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>11366</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="ulsaDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>15723</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="tnmDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>84774</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="himfgDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>16201</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="udemDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>15148</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="itcoDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>13667</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="itcDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>13770</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="ipicytDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>26285</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uabjotDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14725</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="inrtDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>26281</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="cmnnDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>24851</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uaimDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14956</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="unacarDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14931</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="unpaDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>24047</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uvmDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>15538</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="ittDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>13642</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="cimavDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>10535</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="itvoDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>13675</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="usbDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>47549</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="coljalDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>11328</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="isceemDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>13574</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="cioDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>10569</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="ifrnDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>14553</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+        <!--**************************Condiciones filtro contexts Redalyc - Instituciones**************************-->
     </Filters>
 
     <Sets>

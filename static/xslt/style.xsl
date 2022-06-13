@@ -20,7 +20,7 @@
 	<xsl:template match="/">
 		<html>
 			<head>
-                <title>XOAI OAI-PMH Data Provider</title>
+                <title>OAI-PMH data provider - Redalyc Scientific Information System</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
                 <script src="js/jquery.js" type="text/javascript"></script>
@@ -34,7 +34,7 @@
                 <div class="container">
                     <div class="navbar navbar-default" role="navigation">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="#">XOAI OAI-PMH Data Provider - LAReferencia</a>
+                            <a class="navbar-brand" href="/redalyc">OAI-PMH data provider - Redalyc Scientific Information System</a>
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">
@@ -124,8 +124,8 @@
                         <div class="vertical-space"></div>
                         <p><small>Design by Lyncode</small></p>
                         <p>
-                            <a href="http://www.lyncode.com">
-                                <img style="height: 20px;" src="/img/lyncode.png" alt="Lyncode" />
+                            <a href="http://www.lyncode.com" target="_blank">
+                                <img style="height: 20px;" src="img/lyncode.png" alt="Lyncode" />
                             </a>
                         </p>
                     </div>

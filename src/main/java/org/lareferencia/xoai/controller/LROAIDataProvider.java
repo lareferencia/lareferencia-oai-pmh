@@ -21,9 +21,11 @@
  *******************************************************************************/
 package org.lareferencia.xoai.controller;
 
+import ch.qos.logback.classic.util.ContextInitializer;
 import com.hp.hpl.jena.reasoner.ValidityReport.Report;
 import com.lyncode.xoai.dataprovider.OAIDataProvider;
 import com.lyncode.xoai.dataprovider.OAIRequestParameters;
+import com.lyncode.xoai.dataprovider.core.XOAIContext;
 import com.lyncode.xoai.dataprovider.core.XOAIManager;
 import com.lyncode.xoai.dataprovider.exceptions.InvalidContextException;
 import com.lyncode.xoai.dataprovider.exceptions.OAIException;
@@ -54,14 +56,20 @@ import javax.xml.stream.XMLStreamException;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static java.util.Arrays.asList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import static javax.servlet.http.HttpServletResponse.SC_BAD_REQUEST;
 import static org.apache.log4j.Logger.getLogger;
+import org.lareferencia.xoai.model.XOAIContextComparator;
 
 /**
  * 
@@ -84,8 +92,44 @@ public class LROAIDataProvider
     @RequestMapping("/")
     public String indexAction (HttpServletResponse response, Model model) throws ServletException {
         try {
-            XOAIManager manager = xoaiManagerResolver.getManager();
-            model.addAttribute("contexts", manager.getContextManager().getContexts());
+            XOAIManager manager = xoaiManagerResolver.getManager();            
+            Collection<XOAIContext> contextos = manager.getContextManager().getContexts();
+            //Collection<XOAIContext> contextosRedalyc = new ArrayList<XOAIContext>();
+            
+            //Recupera el contexto default
+            Stream<XOAIContext> contexto = contextos.stream()
+                    .filter(r -> r.getName().contains("Default"));
+            
+            //Recupera los contextos de paises en orden alfabetico por nombre
+            Stream<XOAIContext> paises = contextos.stream()
+                    .filter(r -> (r.getDescription().contains("documents from countries")))
+                    .sorted(new XOAIContextComparator());
+            
+            //Recupera los contextos de instituciones en orden alfabetico por nombre
+            Stream<XOAIContext> instituciones = contextos.stream()
+                    .filter(r -> (r.getDescription().contains("documents from institutions")))
+                    .sorted(new XOAIContextComparator());
+            
+            //Une los contextos, primero el default con paises, y de esta union con instituciones
+            //para que queden ordenados mediante estos grupos
+            Collection<XOAIContext> contextosRedalyc = Stream.concat(
+                    Stream.concat(contexto, paises), instituciones)
+                    .collect(Collectors.toList());
+            
+//            for(XOAIContext c : contextos) {
+//                System.out.println("NAME: " + c.getName());
+//                if(!c.getName().contains("LAReferencia") 
+//                        && !c.getName().contains("Driver") 
+//                        && !c.getName().contains("Doctoral and Master Thesis") 
+//                        && !c.getName().contains("OpenAIRE")
+//                        && !c.getName().contains("Default")) {
+//                     contextosRedalyc.add(c);
+//                     //break;
+//                }  
+//            }
+            //Agrega los contextos para iterarlos en la pagina principal
+            model.addAttribute("contexts", contextosRedalyc);
+            //model.addAttribute("contexts", manager.getContextManager().getContexts());
             response.setStatus(SC_BAD_REQUEST);
         } catch (XOAIManagerResolverException e) {
             throw new ServletException("Unable to load XOAI manager, please, try again.", e);

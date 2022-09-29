@@ -192,6 +192,169 @@
                This contexts lists documents from countries: Costa Rica
             </Description>
         </Context>
+
+        <Context baseurl="brasil" name="Brasil">
+            <Filter ref="brasilFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from countries: Brasil
+            </Description>
+        </Context>
+
+        <Context baseurl="chile" name="Chile">
+            <Filter ref="chileFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from countries: Chile
+            </Description>
+        </Context>
+
+        <Context baseurl="colombia" name="Colombia">
+            <Filter ref="colombiaFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from countries: Colombia
+            </Description>
+        </Context>
+
+        <Context baseurl="ecuador" name="Ecuador">
+            <Filter ref="ecuadorFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from countries: Ecuador
+            </Description>
+        </Context>
+
+        <Context baseurl="elsalvador" name="El Salvador">
+            <Filter ref="elsalvadorFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from countries: El Salvador
+            </Description>
+        </Context>
+
+        <Context baseurl="espania" name="España">
+            <Filter ref="espaniaFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from countries: España
+            </Description>
+        </Context>
+
+        <Context baseurl="panama" name="Panamá">
+            <Filter ref="panamaFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from countries: Panamá
+            </Description>
+        </Context>
+
+        <Context baseurl="peru" name="Perú">
+            <Filter ref="peruFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from countries: Perú
+            </Description>
+        </Context>
+
+        <Context baseurl="uruguay" name="Uruguay">
+            <Filter ref="uruguayFilter"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <!--<Format ref="xoai"/>-->
+            <!--<Format ref="didl"/>-->
+            <!--<Format ref="dim"/>-->
+            <!--<Format ref="ore"/>-->
+            <Format ref="rdf"/>
+            <!--<Format ref="etdms"/>-->
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
+            <Description>
+               This contexts lists documents from countries: Uruguay
+            </Description>
+        </Context>
+        
         <!--**************************Contexts Redalyc - Paises**************************-->
 
         <!--**************************Contexts Redalyc - Instituciones**************************-->
@@ -2191,6 +2354,61 @@
                 <Custom ref="costaricaDocumentTypeCondition"/>
             </Definition>
         </Filter>
+
+        <Filter id="brasilFilter">
+            <Definition>
+                <Custom ref="brasilDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="chileFilter">
+            <Definition>
+                <Custom ref="chileDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="colombiaFilter">
+            <Definition>
+                <Custom ref="colombiaDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="ecuadorFilter">
+            <Definition>
+                <Custom ref="ecuadorDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="elsalvadorFilter">
+            <Definition>
+                <Custom ref="elsalvadorDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="espaniaFilter">
+            <Definition>
+                <Custom ref="espaniaDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="panamaFilter">
+            <Definition>
+                <Custom ref="panamaDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="peruFilter">
+            <Definition>
+                <Custom ref="peruDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
+        <Filter id="uruguayFilter">
+            <Definition>
+                <Custom ref="uruguayDocumentTypeCondition"/>
+            </Definition>
+        </Filter>
+
         <!--**************************Contexts Redalyc - Paises**************************-->
         
         <!--**************************Filtro contexts Redalyc - Instituciones**************************-->
@@ -2943,6 +3161,107 @@
                 </list>
             </Configuration>
         </CustomCondition>
+
+        <CustomCondition id="brasilDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.country</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>Brasil</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+
+        <CustomCondition id="chileDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.country</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>Chile</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="colombiaDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.country</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>Colombia</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="ecuadorDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.country</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>Ecuador</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="elsalvadorDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.country</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>El Salvador</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="espaniaDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.country</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>España</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="panamaDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.country</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>Panamá</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="peruDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.country</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>Perú</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <CustomCondition id="uruguayDocumentTypeCondition">
+            <Class>org.lareferencia.xoai.filter.LRAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.country</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>Uruguay</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
         <!--**************************Contexts Redalyc - Paises**************************-->
 
         <!--**************************Condiciones filtro contexts Redalyc - Instituciones**************************-->

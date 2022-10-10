@@ -39,6 +39,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -86,19 +89,19 @@ public class LRRepositoryConfiguration implements RepositoryConfiguration
     @Override
     public String getBaseUrl()
     {
-    	
-    	HttpServletRequest request = context.getRequest();
-    	String pathInfo = request.getPathInfo();
-    	
-    	if ( pathInfo == null )
-    		pathInfo = "";
-    	
+        
+        HttpServletRequest request = context.getRequest();
+        String pathInfo = request.getPathInfo();
+        
+        if ( pathInfo == null )
+            pathInfo = "";
+        
         if (baseUrl == null)
         {
             baseUrl = request.getRequestURL().toString().replace(pathInfo, "");
         }
         return baseUrl + pathInfo;
-    	
+        
 
     }
 
@@ -124,10 +127,18 @@ public class LRRepositoryConfiguration implements RepositoryConfiguration
 //        {
 //            log.error(e.getMessage(), e);
 //        }
-    	
-    	// FIXME: Tal vez lo más prolijo sea mirar el indice solr?
-    	
-        return new Date();
+        
+        // FIXME: Tal vez lo más prolijo sea mirar el indice solr?
+        
+//        return new Date();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Date dateFormated = null;
+        try {
+            dateFormated = df.parse("1995-01-01");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateFormated;
     }
 
     @Override
@@ -151,44 +162,44 @@ public class LRRepositoryConfiguration implements RepositoryConfiguration
         return name;
     }
 
-	@Override
-	public List<String> getDescription() {
-		List<String> result = new ArrayList<String>();
-		String descriptionFile = configurationService.getProperty("description.file");
-		//String descriptionFile = configurationService.getProperty( "description.file");
+    @Override
+    public List<String> getDescription() {
+        List<String> result = new ArrayList<String>();
+        String descriptionFile = configurationService.getProperty("description.file");
+        //String descriptionFile = configurationService.getProperty( "description.file");
 
-		if (descriptionFile == null) {
-			// Try indexed
-			boolean stop = false;
-			List<String> descriptionFiles = new ArrayList<String>();
-			for (int i=0;!stop;i++) {
-				//String tmp = configurationService.getProperty( "description.file."+i);
-				String tmp = configurationService.getProperty("description.file."+i);
+        if (descriptionFile == null) {
+            // Try indexed
+            boolean stop = false;
+            List<String> descriptionFiles = new ArrayList<String>();
+            for (int i=0;!stop;i++) {
+                //String tmp = configurationService.getProperty( "description.file."+i);
+                String tmp = configurationService.getProperty("description.file."+i);
 
-				if (tmp == null) stop = true;
-				else descriptionFiles.add(tmp);
-			}
-			
-			for (String path : descriptionFiles) {
-				try {
-				    File f = new File(path);
-				    if (f.exists())
-				        result.add(FileUtils.readFileToString(f));
-				} catch (IOException e) {
-					log.debug(e.getMessage(), e);
-				}
-			}
-			
-		} else {
-			try {
-			    File f = new File(descriptionFile);
-			    if (f.exists())
-			        result.add(FileUtils.readFileToString(f));
-			} catch (IOException e) {
-				log.debug(e.getMessage(), e);
-			}
-		}
-		return result;
-	}
+                if (tmp == null) stop = true;
+                else descriptionFiles.add(tmp);
+            }
+            
+            for (String path : descriptionFiles) {
+                try {
+                    File f = new File(path);
+                    if (f.exists())
+                        result.add(FileUtils.readFileToString(f));
+                } catch (IOException e) {
+                    log.debug(e.getMessage(), e);
+                }
+            }
+            
+        } else {
+            try {
+                File f = new File(descriptionFile);
+                if (f.exists())
+                    result.add(FileUtils.readFileToString(f));
+            } catch (IOException e) {
+                log.debug(e.getMessage(), e);
+            }
+        }
+        return result;
+    }
 
 }

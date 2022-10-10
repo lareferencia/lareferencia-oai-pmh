@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-
-
     The contents of this file are subject to the license and copyright
     detailed in the LICENSE and NOTICE files at the root of the source
     tree and available online at
-
     http://www.dspace.org/license/
         Developed by DSpace @ Lyncode <dspace@lyncode.com>
-
         > http://www.openarchives.org/OAI/2.0/oai_dc.xsd
-
  -->
 <xsl:stylesheet
         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -118,7 +113,13 @@
                         </xsl:for-each>
                         <!-- dc.date.* -->
                         <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='date']/doc:element/doc:element/doc:field[@name='value']">
-                                <dc:date><xsl:value-of select="." /></dc:date>
+                                <xsl:variable name="dateformat">
+                                        <xsl:value-of select="." />
+                                </xsl:variable>
+                                <!--Omite url dspace-->
+                                <xsl:if test="not(contains($dateformat, 'T')) and not(ends-with($dateformat, 'Z'))">
+                                        <dc:date><xsl:value-of select="$dateformat" /></dc:date>
+                                </xsl:if>
                         </xsl:for-each>
                         <!-- dc.type -->
                         <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element/doc:field[@name='value']">
@@ -130,11 +131,23 @@
                         </xsl:for-each>
                         <!-- dc.identifier -->
                         <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element/doc:field[@name='value']">
-                                <dc:identifier><xsl:value-of select="." /></dc:identifier>
+                                <xsl:variable name="identifierurl">
+                                        <xsl:value-of select="." />
+                                </xsl:variable>
+                                <!--Omite url dspace-->
+                                <xsl:if test="not(contains($identifierurl, 'handle'))">
+                                        <dc:identifier><xsl:value-of select="$identifierurl" /></dc:identifier>
+                                </xsl:if>
                         </xsl:for-each>
                         <!-- dc.identifier.* -->
                         <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element/doc:element/doc:field[@name='value']">
-                                <dc:identifier><xsl:value-of select="." /></dc:identifier>
+                                <xsl:variable name="identifierurl">
+                                        <xsl:value-of select="." />
+                                </xsl:variable>
+                                <!--Omite url dspace-->
+                                <xsl:if test="not(contains($identifierurl, 'handle'))">
+                                        <dc:identifier><xsl:value-of select="$identifierurl" /></dc:identifier>
+                                </xsl:if>
                         </xsl:for-each>
                         <!-- dc.language -->
                         <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='language']/doc:element/doc:field[@name='value']">
@@ -191,50 +204,50 @@
 
                         <!-- dc.source -->
                         <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='source']/doc:element/doc:field[@name='value']">
-                              	<dc:source><xsl:value-of select="." /></dc:source>
+                                <dc:source><xsl:value-of select="." /></dc:source>
                         </xsl:for-each>
 
                         <!-- dc.source.* -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='source']/doc:element/doc:element/doc:field[@name='value']">
-                        	<dc:source><xsl:value-of select="." /></dc:source>
+                        <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='source']/doc:element/doc:element/doc:field[@name='value']">
+                                <dc:source><xsl:value-of select="." /></dc:source>
                         </xsl:for-each>
 
-                        <about>
+                        <!--<about>
                         <provenance>
-       			<xsl:variable name="harvestDate" select="doc:metadata/doc:element[@name='repository']/doc:field[@name='harvestDate']"/>
-			<xsl:variable name="recordStatus" select="doc:metadata/doc:element[@name='repository']/doc:field[@name='altered']"/>
+                        <xsl:variable name="harvestDate" select="doc:metadata/doc:element[@name='repository']/doc:field[@name='harvestDate']"/>
+                        <xsl:variable name="recordStatus" select="doc:metadata/doc:element[@name='repository']/doc:field[@name='altered']"/>
                         <xsl:variable name="repositoryFullName" select="doc:metadata/doc:element[@name='repository']/doc:field[@name='name']"/>
                         <xsl:variable name="repoNameLength" select="string-length(tokenize(//*[contains(text(),'reponame')], ':')[2])"/>
                         <xsl:variable name="openDoarId" select="tokenize(doc:metadata/doc:element[@name='repository']/doc:field[@name='repositoryID'], ':')[2]"/>
                         <originDescription altered="{$recordStatus}" harvestDate="{$harvestDate}">           
-                	        <baseURL><xsl:value-of select="doc:metadata/doc:element[@name='repository']/doc:field[@name='baseURL']"/></baseURL>
-				<identifier><xsl:value-of select="doc:metadata/doc:element[@name='others']/doc:field[@name='identifier']"/></identifier>
-				<datestamp><xsl:value-of select="doc:metadata/doc:element[@name='others']/doc:field[@name='lastModifyDate']"/></datestamp>
-			        <metadataNamespace><xsl:text>http://www.openarchives.org/OAI/2.0/oai_dc/</xsl:text></metadataNamespace>
+                                <baseURL><xsl:value-of select="doc:metadata/doc:element[@name='repository']/doc:field[@name='baseURL']"/></baseURL>
+                                <identifier><xsl:value-of select="doc:metadata/doc:element[@name='others']/doc:field[@name='identifier']"/></identifier>
+                                <datestamp><xsl:value-of select="doc:metadata/doc:element[@name='others']/doc:field[@name='lastModifyDate']"/></datestamp>
+                                <metadataNamespace><xsl:text>http://www.openarchives.org/OAI/2.0/oai_dc/</xsl:text></metadataNamespace>
                                 <xsl:choose>
                                         <xsl:when test="matches($openDoarId,'\d+')">
-                      		                <repositoryID><xsl:value-of select="doc:metadata/doc:element[@name='repository']/doc:field[@name='repositoryID']"/></repositoryID>
+                                                <repositoryID><xsl:value-of select="doc:metadata/doc:element[@name='repository']/doc:field[@name='repositoryID']"/></repositoryID>
                                         </xsl:when>
                                         <xsl:otherwise>
                                                 <repositoryID></repositoryID>
                                         </xsl:otherwise>
                                 </xsl:choose>
-  			        <xsl:choose>
-  					<xsl:when test="string-length(normalize-space($repositoryFullName))>3">
-	                        		<repositoryName><xsl:value-of select="$repositoryFullName"/></repositoryName>
-					</xsl:when>
+                                <xsl:choose>
+                                        <xsl:when test="string-length(normalize-space($repositoryFullName))>3">
+                                                <repositoryName><xsl:value-of select="$repositoryFullName"/></repositoryName>
+                                        </xsl:when>
                                         <xsl:otherwise>
                                                 <xsl:if test="$repoNameLength!=0">
                                                         <repositoryName><xsl:value-of select="concat(tokenize(//*[contains(text(),'reponame')], ':')[2], concat(' - ', tokenize(//*[contains(text(),'instname')], ':')[2]))"/></repositoryName>
                                                 </xsl:if>
                                                 <xsl:if test="repoNameLength=0">
                                                         <repositoryName></repositoryName>
-				                </xsl:if>
+                                                </xsl:if>
                                         </xsl:otherwise>        
                                 </xsl:choose>
                         </originDescription>
                         </provenance>
-                        </about>
+                        </about>-->
                 </oai_dc:dc>
         </xsl:template>
 </xsl:stylesheet>

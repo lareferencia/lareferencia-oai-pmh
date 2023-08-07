@@ -32,6 +32,7 @@ import org.lareferencia.xoai.services.api.config.ConfigurationService;
 import org.lareferencia.xoai.services.api.solr.SolrClientResolver;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 public class LRSolrClientResolver implements SolrClientResolver {
     private static Logger log = LogManager.getLogger(LRSolrClientResolver.class);
@@ -42,6 +43,9 @@ public class LRSolrClientResolver implements SolrClientResolver {
     @Autowired
     private ConfigurationService configurationService;
 
+    @Value( "${solr.url:null}" )
+    private String solrUrl;
+
     @Override
     public SolrClient getClient() throws SolrServerException
     {
@@ -50,9 +54,13 @@ public class LRSolrClientResolver implements SolrClientResolver {
             try
             {
 
-                System.out.println("Connecting to Solr Server" + configurationService.getProperty("solr.url") + " ...");
-                log.info("Connecting to Solr Server" + configurationService.getProperty("solr.url") + " ...");
-                server = new HttpSolrClient.Builder( configurationService.getProperty("solr.url") )
+                if ( solrUrl == null || solrUrl.equals("null") ) {
+                    solrUrl = configurationService.getProperty("solr.url");
+                }
+
+                System.out.println("Connecting to Solr Server" + solrUrl + " ...");
+                log.info("Connecting to Solr Server" + solrUrl + " ...");
+                server = new HttpSolrClient.Builder( solrUrl )
             		    .withConnectionTimeout(60000)
             		    .withSocketTimeout(60000)
             		    .build();

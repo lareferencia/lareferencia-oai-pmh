@@ -27,6 +27,7 @@ import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 
+import org.lareferencia.xoai.ConfigurationManager;
 import org.lareferencia.xoai.services.api.config.ConfigurationService;
 import org.lareferencia.xoai.services.api.solr.SolrClientResolver;
 
@@ -48,8 +49,9 @@ public class LRSolrClientResolver implements SolrClientResolver {
         {
             try
             {
-            	server = new HttpSolrClient.Builder( configurationService.getProperty("solr.url") )
-            		    .withConnectionTimeout(10000)
+                log.info("Connecting to Solr Server" + ConfigurationManager.getProperty("solr.url") + " ...");
+                server = new HttpSolrClient.Builder( configurationService.getProperty("solr.url") )
+            		    .withConnectionTimeout(60000)
             		    .withSocketTimeout(60000)
             		    .build();
             	
@@ -58,7 +60,7 @@ public class LRSolrClientResolver implements SolrClientResolver {
             }
             catch (Exception e)
             {
-                log.error(e.getMessage(), e);
+                log.debug(e.getMessage(), e);
                 throw new SolrServerException(e.getMessage(), e);
             }
         }

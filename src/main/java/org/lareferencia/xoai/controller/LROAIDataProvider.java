@@ -145,7 +145,6 @@ public class LROAIDataProvider
         } catch (XOAIManagerResolverException e) {
             throw new ServletException("OAI 2.0 wasn't correctly initialized, please check the log for previous errors", e);
         } catch (OAIException e) {
-            log.error(e.getMessage(), e);
             log.error(e.getMessage());
             log.debug(e.getMessage(), e);
             closeContext(context);

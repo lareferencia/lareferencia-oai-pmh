@@ -31,6 +31,7 @@ import com.lyncode.xoai.dataprovider.exceptions.WritingXmlException;
 import com.lyncode.xoai.dataprovider.services.api.RepositoryConfiguration;
 
 import org.apache.log4j.Logger;
+import org.apache.solr.client.solrj.SolrServerException;
 import org.lareferencia.xoai.services.api.cache.XOAICacheService;
 import org.lareferencia.xoai.services.api.config.XOAIManagerResolver;
 import org.lareferencia.xoai.services.api.config.XOAIManagerResolverException;
@@ -41,6 +42,7 @@ import org.lareferencia.xoai.services.api.xoai.IdentifyResolver;
 import org.lareferencia.xoai.services.api.xoai.ItemRepositoryResolver;
 import org.lareferencia.xoai.services.api.xoai.SetRepositoryResolver;
 import org.lareferencia.xoai.services.impl.xoai.LRResumptionTokenFormatter;
+import org.lareferencia.xoai.solr.exceptions.LRSolrException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -144,6 +146,8 @@ public class LROAIDataProvider
             throw new ServletException("OAI 2.0 wasn't correctly initialized, please check the log for previous errors", e);
         } catch (OAIException e) {
             log.error(e.getMessage(), e);
+            log.error(e.getMessage());
+            log.debug(e.getMessage(), e);
             closeContext(context);
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
                     "Unexpected error. For more information visit the log files.");

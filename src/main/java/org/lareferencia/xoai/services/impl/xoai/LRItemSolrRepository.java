@@ -28,6 +28,7 @@ import com.lyncode.xoai.dataprovider.core.ListItemsResults;
 import com.lyncode.xoai.dataprovider.data.Item;
 import com.lyncode.xoai.dataprovider.data.ItemIdentifier;
 import com.lyncode.xoai.dataprovider.exceptions.IdDoesNotExistException;
+import com.lyncode.xoai.dataprovider.exceptions.OAIException;
 import com.lyncode.xoai.dataprovider.filter.ScopedFilter;
 
 import org.apache.log4j.LogManager;
@@ -64,7 +65,7 @@ public class LRItemSolrRepository extends LRItemRepository
     }
 
     @Override
-    public Item getItem(String identifier) throws IdDoesNotExistException {
+    public Item getItem(String identifier) throws IdDoesNotExistException, OAIException {
           if (identifier == null) throw new IdDoesNotExistException();   
 		  
           try
@@ -76,6 +77,9 @@ public class LRItemSolrRepository extends LRItemRepository
 		  {
 		      throw new IdDoesNotExistException(ex);
 		  }
+          catch (LRSolrException ex) {
+              throw new OAIException("SOLR is not available" + ex.getMessage());
+          }
       }
      
 //        String parts[] = identifier.split(Pattern.quote(":"));
@@ -98,7 +102,7 @@ public class LRItemSolrRepository extends LRItemRepository
 
     @Override
     public ListItemIdentifiersResult getItemIdentifiers(
-            List<ScopedFilter> filters, int offset, int length)
+            List<ScopedFilter> filters, int offset, int length) throws OAIException
     {
         try
         {
@@ -116,12 +120,13 @@ public class LRItemSolrRepository extends LRItemRepository
         catch (LRSolrException ex)
         {
             log.error(ex.getMessage(), ex);
-            return new ListItemIdentifiersResult(false, new ArrayList<ItemIdentifier>());
+            //return new ListItemIdentifiersResult(false, new ArrayList<ItemIdentifier>());
+            throw new OAIException("SOLR is not available" + ex.getMessage());
         }
     }
 
     @Override
-    public ListItemsResults getItems(List<ScopedFilter> filters, int offset, int length)
+    public ListItemsResults getItems(List<ScopedFilter> filters, int offset, int length) throws OAIException
     {
         try
         {
@@ -130,8 +135,8 @@ public class LRItemSolrRepository extends LRItemRepository
         }
         catch (LRSolrException ex)
         {
-            log.error(ex.getMessage(), ex);
-            return new ListItemsResults(false, new ArrayList<Item>());
+            log.debug(ex.getMessage(), ex);
+            throw new OAIException("SOLR is not available" + ex.getMessage());
         }
     }
 

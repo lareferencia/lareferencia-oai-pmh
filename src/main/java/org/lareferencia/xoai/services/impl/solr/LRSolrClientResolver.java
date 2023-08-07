@@ -59,6 +59,7 @@ public class LRSolrClientResolver implements SolrClientResolver {
             catch (Exception e)
             {
                 log.error(e.getMessage(), e);
+                throw new SolrServerException(e.getMessage(), e);
             }
         }
         return server;

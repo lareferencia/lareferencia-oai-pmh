@@ -56,7 +56,7 @@ public class LRSolrSearch
     }
 
     public static SolrDocument querySingle(SolrClient server, SolrQuery solrParams)
-            throws SolrSearchEmptyException
+            throws SolrSearchEmptyException, LRSolrException
     {
         try
         {
@@ -69,7 +69,7 @@ public class LRSolrSearch
         }
         catch (SolrServerException | IOException ex)
         {
-            throw new SolrSearchEmptyException(ex.getMessage(), ex);
+            throw new LRSolrException(ex.getMessage(), ex);
         }
     }
 }

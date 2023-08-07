@@ -45,8 +45,10 @@ public class LRSolrClient
         {
             try
             {
+
+                log.debug("Connecting to Solr Server" + ConfigurationManager.getProperty("solr.url") + " ...");
                 _server = new HttpSolrClient.Builder( ConfigurationManager.getProperty("solr.url") )
-            		    .withConnectionTimeout(10000)
+            		    .withConnectionTimeout(60000)
             		    .withSocketTimeout(60000)
             		    .build(); 
                 		

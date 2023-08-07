@@ -3,3 +3,6 @@ server.port=8092
 #server.servlet.context-path=/
 server.use-forward-headers=true
 xoai.config.path=config/xoai.config
+
+# Base solr index
+solr.url=http://localhost:8983/solr/oai

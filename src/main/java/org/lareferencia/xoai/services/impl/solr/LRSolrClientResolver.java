@@ -58,8 +58,8 @@ public class LRSolrClientResolver implements SolrClientResolver {
                     solrUrl = configurationService.getProperty("solr.url");
                 }
 
-                System.out.println("Connecting to Solr Server" + solrUrl + " ...");
-                log.info("Connecting to Solr Server" + solrUrl + " ...");
+                System.out.println("Connecting to Solr Server " + solrUrl + " ...");
+                log.info("Connecting to Solr Server: "  + solrUrl + " ...");
                 server = new HttpSolrClient.Builder( solrUrl )
             		    .withConnectionTimeout(60000)
             		    .withSocketTimeout(60000)

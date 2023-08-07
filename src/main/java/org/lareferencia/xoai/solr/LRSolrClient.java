@@ -56,7 +56,8 @@ public class LRSolrClient
             }            
             catch (Exception e)
             {
-                log.error(e.getMessage(), e);
+                log.debug(e.getMessage(), e);
+                throw new SolrServerException(e.getMessage(), e);
             }
         }
         return _server;

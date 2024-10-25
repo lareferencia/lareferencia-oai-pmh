@@ -350,8 +350,12 @@
                     <string>masterThesis</string>
                     <string>doctoralThesis</string>
                     <string>report</string>
-                  
-                    <!-- string>bachelorThesis</string>
+		    <string>book</string>
+                    <string>bookPart</string>
+		    <string>dataSet</string>
+		    <string>c_ddb1</string>
+                    <!--
+                    <string>bachelorThesis</string>
                   
                     <string>book</string>
                     <string>bookPart</string>

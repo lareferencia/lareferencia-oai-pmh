@@ -19,7 +19,6 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
 
-
         <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css" />
         <link rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}" type="text/css" />
         <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css" />
@@ -33,22 +32,16 @@
             <!-- Static navbar -->
             <div class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">XOAI OAI-PMH Data Provider - LaReferencia</a>
+                    <a class="navbar-brand" href="#">XOAI OAI-PMH Data Provider - SciELO</a>
                 </div>
                 <div class="navbar-collapse collapse">
 
                 </div><!--/.nav-collapse -->
             </div>
 
-            <div class="alert alert-danger text-center">
-                Invalid context
-            </div>
-
-
-
 			<!-- Main component for a primary marketing message or call to action -->
             <div class="row-fluid">
-                <h2>Available Contexts</h2>
+                <!-- <h2>Available Contexts</h2> -->
                 <div class="list-group xoai-contexts">
                     <div th:each="item : ${contexts}" class="list-group-item">
                         <h4 class="list-group-item-heading" th:text="${item.name}"></h4>

@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+
+  oai: &oai
+    build:
+      context: .
+      dockerfile: ./compose/local/oai/Dockerfile
+    image: oai
+    container_name: oai
+    hostname: oai
+    depends_on:
+      - solr
+    links:
+      - solr
+    environment:
+      - solr_url=http://192.168.15.145:8983/solr/oai
+    volumes:
+      - .:/app:z
+    ports:
+      - "8092:8092"
+
+  solr: &solr
+    image: "solr:7.3.1"
+    hostname: solr
+    container_name: solr
+    ports:
+      - "8983:8983"
+    volumes:
+      - ./index/oai/:/opt/solr/server/solr/oai

@@ -1,0 +1,61 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+<responseDate>2023-08-28T13:42:24Z</responseDate>
+<request verb="ListRecords" metadataPrefix="oai_dc_agris">http://www.scielo.cl/oai/scielo-oai.php</request>
+<ListRecords>
+<record>
+    <header>
+        <identifier>oai:agris.scielo:XS1998000701</identifier>
+        <datestamp>1999-06-15</datestamp>
+        <setSpec>0034-9887</setSpec>
+    </header>
+    <metadata>
+        <ags:resources xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+            xmlns:ags="http://purl.org/agmes/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/"
+            xmlns:agls="http://www.naa.gov.au/recordkeeping/gov_online/agls/1.2"
+            xmlns:dcterms="http://purl.org/dc/terms/">
+            <ags:resource ags:ARN="XS1998000701">
+                <dc:title xml:lang="es"><![CDATA[Influencia de factores de riesgo y terapia farmacológica en la mortalidad de hipertensos esenciales]]></dc:title>
+                <dc:creator>
+                    <ags:creatorPersonal>Román A, Oscar(Universidad de Chile)</ags:creatorPersonal>
+                    <ags:creatorPersonal>Cuevas S, Gerardo(Hospital San Borja Arriarán)</ags:creatorPersonal>
+                    <ags:creatorPersonal>Bunout B, Daniel</ags:creatorPersonal>
+                </dc:creator>
+                <dc:publisher>
+                    <ags:publisherName>Sociedad Médica de Santiago</ags:publisherName>
+                </dc:publisher>
+                <dc:date>
+                    <dcterms:dateIssued>1998</dcterms:dateIssued>
+                </dc:date>
+                <dc:subject>Hypertension</dc:subject>
+                <dc:subject>Antihypertensive agents</dc:subject>
+                <dc:subject>Adrenergic beta-antagonists</dc:subject>
+                <dc:subject>Calcium channel blockers</dc:subject>
+                <dc:description>
+                    <dcterms:abstract xml:lang="en"><![CDATA[Background: The VJN consensus stated that although new antihypertensive agents, such as angiotensin converting enzyme inhibitors and calcium channel blockers, are considered safer drugs, there is no firm evidence from large controlled trials that these drugs are associated with a lower cardiovascular mortality. Aim: To study the association between cardiovascular risk factors, blood pressure levels, pharmacological treatment and mortality in a group of hypertensive patients followed at an hypertension outpatient clinic. Patients and methods: Patients with essential hypertension were treated with different antihypertensive medications, according to physicians criteria, and controlled until death or loss from follow up. Causes of death were obtained from hospital records and death certificates. Survival was analyzed using life tables, comparisons between groups of patients were done using chi square or a CoxÕs proportional hazards model. Results: Three hundred thirty nine hypertensive patients aged 33 to 80 years old were followed for a mean period of 9.8 ± 4.9 years. Eighty six were treated with beta blockers, 64 with diuretics, 133 with calcium antagonists and 56 with ACE inhibitors. Blood pressure dropped similarly with all medications. During follow up, 79 patients died. Life table analysis showed that patients with a history of angina, diabetes or myocardial infarction had higher mortality rates. Similarly, patients treated with beta blockers and diuretics had higher mortality than patients treated with calcium antagonists or angiotensin converting enzyme inhibitors. The proportional hazards model showed that the effect of treatment modality persisted after correction for the other risk factors for mortality. Conclusions: In this series of hypertensive patients, those treated with beta blockers or diuretics had higher mortality rates than those receiving calcium channel antagonists or angiotensin converting enzyme inhibitors.]]></dcterms:abstract>
+                </dc:description>
+                <dc:identifier scheme="dcterms:URI">
+                    &lt;![CDATA[http://www.scielo.cl/scielo.php?script=sci_arttext&amp;pid=S0034-98871998000700001&amp;lng=en&amp;nrm=iso&amp;tlng=en]]&gt;</dc:identifier>
+                <dc:identifier scheme="ags:DOI" />
+                <dc:type>journal article</dc:type>
+                <dc:format>
+                    <dcterms:medium>text/xml</dcterms:medium>
+                </dc:format>
+                <dc:language scheme="ags:ISO639-1">es</dc:language>
+                <agls:availability>
+                    <ags:availabilityLocation>SCIELO</ags:availabilityLocation>
+                    <ags:availabilityNumber />
+                </agls:availability>
+                <ags:citation>
+                    <ags:citationTitle>Revista médica de Chile</ags:citationTitle>
+                    <ags:citationIdentifier scheme="ags:ISSN">0034-9887</ags:citationIdentifier>
+                    <ags:citationNumber>vol.126 num.7</ags:citationNumber>
+                    <ags:citationChronology>1998/07</ags:citationChronology>
+                </ags:citation>
+            </ags:resource>
+        </ags:resources>
+    </metadata>
+</record>

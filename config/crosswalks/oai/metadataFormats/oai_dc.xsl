@@ -28,22 +28,45 @@
                                 <dc:title><xsl:value-of select="." /></dc:title>
                         </xsl:for-each>
                         <!-- dc.title.* -->
+                         
                         <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element/doc:element/doc:field[@name='value']">
                                 <dc:title><xsl:value-of select="." /></dc:title>
                         </xsl:for-each>
+
                         <!-- dc.creator -->
                         <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='creator']/doc:element/doc:field[@name='value']">
-                                <dc:creator><xsl:value-of select="." /></dc:creator>
-                        </xsl:for-each>
-                        <!-- dc.contributor.author -->
-                        <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name='author']/doc:element/doc:field[@name='value']">
-                                <dc:creator><xsl:value-of select="." /></dc:creator>
+                                <xsl:choose>
+                                        <xsl:when test="@orcid">
+                                                <dc:creator orcid="{./@orcid}"><xsl:value-of select="." /></dc:creator>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                                <dc:creator><xsl:value-of select="." /></dc:creator>
+                                        </xsl:otherwise>
+                                </xsl:choose> 
                         </xsl:for-each>
 
+                        <!-- dc.contributor.author -->
+                        <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name='author']/doc:element/doc:field[@name='value']">
+                                <xsl:choose>
+                                        <xsl:when test="@orcid">
+                                                <dc:creator orcid="{./@orcid}"><xsl:value-of select="." /></dc:creator>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                                <dc:creator><xsl:value-of select="." /></dc:creator>
+                                        </xsl:otherwise>
+                                </xsl:choose> 
+                        </xsl:for-each>
 
                         <!-- dc.contributor.author -->
                         <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name='author']/doc:field[@name='value']">
-                                <dc:creator><xsl:value-of select="." /></dc:creator>
+                                <xsl:choose>
+                                        <xsl:when test="@orcid">
+                                                <dc:creator orcid="{./@orcid}"><xsl:value-of select="." /></dc:creator>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                                <dc:creator><xsl:value-of select="." /></dc:creator>
+                                        </xsl:otherwise>
+                                </xsl:choose> 
                         </xsl:for-each>
 
                         <!-- dc.contributor.* (!author) -->

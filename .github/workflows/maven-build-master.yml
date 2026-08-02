@@ -12,6 +12,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      MAVEN_OPTS: -Dapi.version=1.44
     strategy:
       matrix:
         java: [17, 21]

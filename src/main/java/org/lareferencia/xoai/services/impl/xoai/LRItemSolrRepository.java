@@ -35,6 +35,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.util.ClientUtils;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
 import org.lareferencia.xoai.data.RepositorySolrItem;
@@ -70,7 +71,8 @@ public class LRItemSolrRepository extends LRItemRepository
 		  
           try
 		  {
-		      SolrQuery params = new SolrQuery("item.handle:\"" + identifier + "\"");
+              SolrQuery params = new SolrQuery("item.handle:\""
+                      + ClientUtils.escapeQueryChars(identifier) + "\"");
 		      return new RepositorySolrItem(LRSolrSearch.querySingle(server, params));
 		  }
 		  catch (SolrSearchEmptyException ex)

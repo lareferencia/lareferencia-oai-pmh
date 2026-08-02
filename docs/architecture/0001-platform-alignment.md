@@ -71,10 +71,11 @@ provider integration suite runs against Solr 9.8.0 using a core upgraded to
 Lucene 9.8 and point-based numeric and date fields.
 
 XOAI 3.2.10 remains temporarily isolated behind its required JAXB 2.3 runtime
-and a Log4j-to-SLF4J bridge. Removing the remaining DSpace 5.1 coupling,
-replacing or modernizing XOAI, producing the runtime image and integrating the
-provider into Platform remain separate follow-up phases. Platform has not been
-modified during this phase.
+and a Log4j-to-SLF4J bridge. The provider no longer depends on DSpace 5.1; its
+request context and filters now contain only provider-owned behavior. Replacing
+or modernizing XOAI, producing the runtime image and integrating the provider
+into Platform remain separate follow-up phases. Platform has not been modified
+during this phase.
 
 ## Consequences
 

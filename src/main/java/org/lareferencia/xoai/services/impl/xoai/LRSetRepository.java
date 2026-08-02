@@ -177,7 +177,11 @@ public class LRSetRepository implements SetRepository
         // todos los sets son comunity + collection
         List<Set> tmp = community(0,-1) ;
         tmp.addAll( collection(0,-1) );
-        return new ListSetsResult(offset + length < tmp.size(), tmp.subList(offset, Math.min(offset + length, tmp.size())), tmp.size());
+        if (offset < 0 || length < 0 || offset >= tmp.size())
+            return new ListSetsResult(false, array, tmp.size());
+
+        int end = (int) Math.min((long) offset + length, tmp.size());
+        return new ListSetsResult(end < tmp.size(), tmp.subList(offset, end), tmp.size());
 
 
         /**

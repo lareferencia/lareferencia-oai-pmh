@@ -47,6 +47,7 @@ public class LRResumptionTokenFormatter implements ResumptionTokenFormatter {
         else {
             try {
                 int offset = Integer.parseInt(res[4]);
+                if (offset < 0) throw new BadResumptionToken();
                 String prefix = (res[0].equals("")) ? null : res[0];
                 String set = (res[3].equals("")) ? null : res[3];
                 Date from = (res[1].equals("")) ? null : DateUtils.parse(res[1]);

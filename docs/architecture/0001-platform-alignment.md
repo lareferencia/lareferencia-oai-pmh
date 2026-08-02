@@ -23,7 +23,8 @@ The target compatibility baseline is:
 | Additional CI runtime | 21 |
 | Spring Boot | 3.5.x, matching Platform |
 | Servlet and related APIs | Jakarta |
-| Solr, SolrJ and Testcontainers image | 9.8.0, pending reindex validation |
+| SolrJ | 9.5.0, matching Platform |
+| Solr runtime and Testcontainers image | 9.8.0 |
 | Tests | JUnit 5, REST Assured and Testcontainers |
 | Logging | SLF4J with Spring Boot-managed Logback |
 | Runtime image | Eclipse Temurin 17 JRE, layered and non-root |
@@ -61,6 +62,19 @@ suite and a clean reindex test.
 
 Each step must leave the project buildable and is delivered as a separate,
 bisectable commit or coordinated pull request.
+
+## Implementation status
+
+The provider now builds with Java 17 bytecode on Spring Boot 3.5.0 and Jakarta
+Servlet APIs. CI also exercises Java 21. SolrJ 9.5.0 matches Platform, while the
+provider integration suite runs against Solr 9.8.0 using a core upgraded to
+Lucene 9.8 and point-based numeric and date fields.
+
+XOAI 3.2.10 remains temporarily isolated behind its required JAXB 2.3 runtime
+and a Log4j-to-SLF4J bridge. Removing the remaining DSpace 5.1 coupling,
+replacing or modernizing XOAI, producing the runtime image and integrating the
+provider into Platform remain separate follow-up phases. Platform has not been
+modified during this phase.
 
 ## Consequences
 

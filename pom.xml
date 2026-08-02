@@ -30,6 +30,8 @@
 		<maven.compiler.target>17</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jtwig.version>2.0.1</jtwig.version>
+		<xoai.version>3.4.0</xoai.version>
+		<glassfish-jaxb.version>2.3.8</glassfish-jaxb.version>
 		<solr.version>9.5.0</solr.version>
 		<testcontainers.version>1.20.1</testcontainers.version>
 	</properties>
@@ -85,33 +87,19 @@
 		<dependency>
 			<groupId>org.dspace</groupId>
 			<artifactId>xoai</artifactId>
-			<version>3.2.10</version>
+			<version>${xoai.version}</version>
 			<exclusions>
 				<exclusion>
-					<groupId>com.sun.xml.bind</groupId>
-					<artifactId>jaxb-impl</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>log4j</groupId>
-					<artifactId>log4j</artifactId>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-core</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!-- XOAI 3.x uses javax.xml.bind; do not let the Boot BOM select JAXB 4. -->
 		<dependency>
-			<groupId>javax.xml.bind</groupId>
-			<artifactId>jaxb-api</artifactId>
-			<version>2.3.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-impl</artifactId>
-			<version>2.3.9</version>
-		</dependency>
-
-		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib</artifactId>
-			<version>3.1</version>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>${glassfish-jaxb.version}</version>
 		</dependency>
 
 		<dependency>
@@ -124,29 +112,7 @@
 			<version>${solr.version}</version>
 		</dependency>
 
-		<!-- OCLC XSLT -->
-		<dependency>
-			<groupId>xalan</groupId>
-			<artifactId>xalan</artifactId>
-			<version>2.7.2</version>
-		</dependency>
-		<dependency>
-			<groupId>xerces</groupId>
-			<artifactId>xercesImpl</artifactId>
-			<version>2.11.0</version>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.saxon</groupId>
-			<artifactId>Saxon-HE</artifactId>
-			<version>9.6.0-5</version>
-		</dependency>
-
 		<!-- Utilities -->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>13.0</version>
-		</dependency>
 		<dependency>
 			<groupId>com.lyncode</groupId>
 			<artifactId>builder-commons</artifactId>

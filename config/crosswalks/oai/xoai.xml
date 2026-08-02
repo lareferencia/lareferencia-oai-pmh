@@ -392,7 +392,7 @@
             <Configuration>
                 <string name="field">dc.rights</string>
                 <string name="operator">contains</string>
-                <list>
+                <list name="values">
                     <string>openAccess</string>
                     <string>embargoedAccess</string>
                 </list>

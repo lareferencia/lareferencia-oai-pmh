@@ -7,43 +7,22 @@ import org.apache.solr.common.SolrInputDocument;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.testcontainers.containers.GenericContainer;
-import org.testcontainers.containers.wait.strategy.Wait;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
-import org.testcontainers.utility.DockerImageName;
-import org.testcontainers.utility.MountableFile;
+import org.lareferencia.xoai.support.SharedSolrContainer;
 
-import java.nio.file.Paths;
-import java.time.Duration;
 import java.time.Instant;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-@Testcontainers
 class LRItemSolrRepositoryIntegrationTest {
-
-    @Container
-    private static final GenericContainer<?> SOLR = new GenericContainer<>(
-            DockerImageName.parse("solr:9.8.0"))
-            .withExposedPorts(8983)
-            .withCopyFileToContainer(
-                    MountableFile.forHostPath(Paths.get("solr.core/oai/conf").toAbsolutePath()),
-                    "/opt/oai-config")
-            .withCommand("solr-precreate", "oai", "/opt/oai-config")
-            .waitingFor(Wait.forHttp("/solr/oai/select?q=*:*&rows=0&wt=json")
-                    .forStatusCode(200))
-            .withStartupTimeout(Duration.ofSeconds(120));
 
     private static SolrClient solrClient;
     private static LRItemSolrRepository repository;
 
     @BeforeAll
     static void indexFixtures() throws Exception {
-        String solrUrl = "http://" + SOLR.getHost() + ":" + SOLR.getMappedPort(8983)
-                + "/solr/oai";
+        String solrUrl = SharedSolrContainer.getSolrUrl();
         solrClient = new HttpSolrClient.Builder(solrUrl).build();
         repository = new LRItemSolrRepository(solrClient, filters -> "item.public:true");
 

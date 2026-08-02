@@ -13,8 +13,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
 import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
@@ -28,6 +35,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class OaiProtocolIntegrationTest {
 
     private static final String HANDLE = "20.500.12345/public+record";
+    private static final String OAI_NAMESPACE = "http://www.openarchives.org/OAI/2.0/";
 
     @LocalServerPort
     private int port;
@@ -65,7 +73,7 @@ class OaiProtocolIntegrationTest {
 
         Response getRecord = request("GetRecord", "metadataPrefix", "oai_dc",
                 "identifier", HANDLE);
-        assertOaiXml(getRecord.asString());
+        assertValidOaiEnvelope(getRecord.asString());
         getRecord.then().body(containsString("<GetRecord>"))
                 .body(containsString("<identifier>" + HANDLE + "</identifier>"));
     }
@@ -74,7 +82,7 @@ class OaiProtocolIntegrationTest {
     void reportsProtocolErrorsAsOaiXml() throws Exception {
         Response response = request("UnknownVerb");
 
-        assertOaiXml(response.asString());
+        assertValidOaiEnvelope(response.asString());
         response.then().statusCode(200)
                 .body(containsString("<error code=\"badVerb\""));
     }
@@ -93,7 +101,7 @@ class OaiProtocolIntegrationTest {
                 : request(verb, parameter, value);
 
         response.then().statusCode(200).body(containsString("<" + verb + ">"));
-        assertOaiXml(response.asString());
+        assertValidOaiEnvelope(response.asString());
     }
 
     private Response request(String verb, String... parameters) {
@@ -106,13 +114,33 @@ class OaiProtocolIntegrationTest {
         return request.when().get("/request");
     }
 
-    private static void assertOaiXml(String body) throws Exception {
+    private static void assertValidOaiEnvelope(String body) throws Exception {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);
-        String root = factory.newDocumentBuilder()
-                .parse(new ByteArrayInputStream(body.getBytes(StandardCharsets.UTF_8)))
-                .getDocumentElement().getLocalName();
-        assertEquals("OAI-PMH", root);
+        factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+        factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
+        factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+        Document document = factory.newDocumentBuilder()
+                .parse(new ByteArrayInputStream(body.getBytes(StandardCharsets.UTF_8)));
+
+        assertEquals("OAI-PMH", document.getDocumentElement().getLocalName());
+        removeExtensionContainers(document, "metadata", "about", "description", "setDescription");
+
+        SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+        schemaFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+        Schema schema = schemaFactory.newSchema(
+                OaiProtocolIntegrationTest.class.getResource("/oai/OAI-PMH.xsd"));
+        schema.newValidator().validate(new DOMSource(document));
+    }
+
+    private static void removeExtensionContainers(Document document, String... localNames) {
+        for (String localName : localNames) {
+            NodeList nodes = document.getElementsByTagNameNS(OAI_NAMESPACE, localName);
+            while (nodes.getLength() > 0) {
+                Node node = nodes.item(0);
+                node.getParentNode().removeChild(node);
+            }
+        }
     }
 
     private static SolrInputDocument item(int id, String handle, boolean isPublic) {

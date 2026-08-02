@@ -54,6 +54,8 @@ other normalization is introduced by this migration. Given the handle
 1. Unit tests for filters, identifier lookup and token formatting.
 2. Repository tests against a Solr Testcontainer using the canonical OAI core.
 3. HTTP tests for every OAI verb and error response.
-4. XML Schema validation for representative successful and error responses.
+4. Offline XML Schema validation for representative successful and error OAI
+   envelopes. Community metadata payloads are validated separately against each
+   configured format schema.
 5. Differential tests comparing normalized responses from the old and migrated
    providers against the same read-only Solr dataset.

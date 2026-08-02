@@ -1,2 +1,4 @@
 #!/bin/bash
-mvn clean package install -DskipTests -Dmaven.javadoc.skip=true
+set -euo pipefail
+
+./mvnw --batch-mode clean install -Dmaven.javadoc.skip=true

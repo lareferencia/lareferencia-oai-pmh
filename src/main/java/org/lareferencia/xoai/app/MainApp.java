@@ -24,8 +24,8 @@ package org.lareferencia.xoai.app;
 
 import static java.lang.Integer.MAX_VALUE;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
 
 import org.lareferencia.xoai.ConfigurationManager;
 import org.lareferencia.xoai.services.api.xoai.ItemRepositoryResolver;
@@ -38,8 +38,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -104,11 +102,5 @@ public class MainApp implements WebMvcConfigurer {
                 .addResourceLocations("/static/")
                 .setCachePeriod(MAX_VALUE);
     }
-
-    @Override
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-        configurer.enable();
-    }
-	
 
 }

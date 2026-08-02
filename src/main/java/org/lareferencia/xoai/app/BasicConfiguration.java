@@ -21,10 +21,6 @@
  *******************************************************************************/
 package org.lareferencia.xoai.app;
 
-import org.apache.log4j.Logger;
-import org.lareferencia.xoai.services.api.cache.XOAICacheService;
-//import org.lareferencia.xoai.services.api.cache.XOAILastCompilationCacheService;
-import org.lareferencia.xoai.services.api.cache.XOAILastCompilationCacheService;
 import org.lareferencia.xoai.services.api.config.ConfigurationService;
 import org.lareferencia.xoai.services.api.config.XOAIManagerResolver;
 import org.lareferencia.xoai.services.api.context.ContextService;
@@ -34,8 +30,6 @@ import org.lareferencia.xoai.services.api.xoai.IdentifyResolver;
 import org.lareferencia.xoai.services.api.xoai.ItemRepositoryResolver;
 import org.lareferencia.xoai.services.api.xoai.LRFilterResolver;
 import org.lareferencia.xoai.services.api.xoai.SetRepositoryResolver;
-import org.lareferencia.xoai.services.impl.cache.LREmptyCacheService;
-import org.lareferencia.xoai.services.impl.cache.LRXOAILastCompilationCacheService;
 import org.lareferencia.xoai.services.impl.config.LRConfigurationService;
 import org.lareferencia.xoai.services.impl.context.LRContextService;
 import org.lareferencia.xoai.services.impl.context.LRXOAIManagerResolver;
@@ -53,8 +47,6 @@ import com.lyncode.xoai.dataprovider.services.api.ResourceResolver;
 
 @Configuration
 public class BasicConfiguration {
-    private static final Logger log = Logger.getLogger(BasicConfiguration.class);
-
     @Bean
     public ConfigurationService configurationService() {
         return new LRConfigurationService();
@@ -75,25 +67,6 @@ public class BasicConfiguration {
     @Bean
     public XOAIManagerResolver xoaiManagerResolver() {
         return new LRXOAIManagerResolver();
-    }
-
-    @Bean
-    public XOAICacheService xoaiCacheService() {
-       /* if (configurationService().getBooleanProperty("oai", "cache.enabled", true)) {
-            try {
-                return new DSpaceXOAICacheService(xoaiManagerResolver().getManager());
-            } catch (XOAIManagerResolverException e) {
-                log.error("Not able to start XOAI normal cache service.", e);
-                return new DSpaceEmptyCacheService();
-            }
-        } else*/
-            return new LREmptyCacheService();
-    }
-
-    
-    @Bean
-    public XOAILastCompilationCacheService xoaiLastCompilationCacheService () {
-        return new LRXOAILastCompilationCacheService();
     }
 
     @Bean

@@ -31,7 +31,6 @@ import com.lyncode.xoai.dataprovider.services.api.RepositoryConfiguration;
 
 import org.apache.log4j.Logger;
 import org.apache.solr.client.solrj.SolrServerException;
-import org.lareferencia.xoai.services.api.cache.XOAICacheService;
 import org.lareferencia.xoai.services.api.config.XOAIManagerResolver;
 import org.lareferencia.xoai.services.api.config.XOAIManagerResolverException;
 import org.lareferencia.xoai.services.api.context.ContextService;
@@ -73,7 +72,6 @@ public class LROAIDataProvider
 {
     private static final Logger log = getLogger(LROAIDataProvider.class);
 
-    @Autowired XOAICacheService cacheService;
     @Autowired ContextService contextService;
     @Autowired XOAIManagerResolver xoaiManagerResolver;
     @Autowired ItemRepositoryResolver itemRepositoryResolver;
@@ -118,14 +116,7 @@ public class LROAIDataProvider
             response.setContentType("application/xml");
             response.setCharacterEncoding("UTF-8");
 
-            String identification = xoaiContext + parameters.requestID();
-
-            if (cacheService.isActive()) {
-                if (!cacheService.hasCache(identification))
-                    cacheService.store(identification, dataProvider.handle(parameters));
-
-                cacheService.handle(identification, out);
-            } else dataProvider.handle(parameters, out);
+            dataProvider.handle(parameters, out);
 
 
             out.flush();

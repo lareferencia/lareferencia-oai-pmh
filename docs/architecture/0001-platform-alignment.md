@@ -70,14 +70,19 @@ Servlet APIs. CI also exercises Java 21. SolrJ 9.5.0 matches Platform, while the
 provider integration suite runs against Solr 9.8.0 using a core upgraded to
 Lucene 9.8 and point-based numeric and date fields.
 
-XOAI 3.2.10 remains temporarily isolated behind its required JAXB 2.3 runtime
-and a Log4j-to-SLF4J bridge. The provider no longer depends on DSpace 5.1; its
-request context and filters now contain only provider-owned behavior. A
-multi-stage Eclipse Temurin 17 image packages only the provider, runs as a
-non-root user and exposes Actuator health probes. Solr remains a separate 9.8
-service. Replacing or modernizing XOAI and integrating the provider into
-Platform remain separate follow-up phases. Platform has not been modified
-during this phase.
+XOAI has been upgraded from 3.2.10 to 3.4.0, the Java 11 generation also used by
+DSpace 7.6. Its Log4j 2 implementation is excluded and routed through Spring
+Boot's SLF4J bridge. JAXB remains pinned consistently to 2.3 because XOAI 3.x
+uses `javax.xml.bind`; this prevents the Spring Boot BOM from mixing in JAXB 4
+components. The provider-specific resolver now compiles reusable XSLT
+`Templates`, matching the updated XOAI contract.
+
+The provider no longer depends on DSpace 5.1. Its request context and filters
+contain only provider-owned behavior, and the permanently disabled DSpace OAI
+response cache has been removed. A multi-stage Eclipse Temurin 17 image packages
+only the provider, runs as a non-root user and exposes Actuator health probes.
+Solr remains a separate 9.8 service. Integrating the provider into Platform
+remains a follow-up phase. Platform has not been modified during this phase.
 
 ## Consequences
 

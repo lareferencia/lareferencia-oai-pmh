@@ -8,6 +8,7 @@ Standalone OAI-PMH provider backed by the LA Referencia Solr `oai` core.
 
 - Java 17
 - Spring Boot 3.5
+- XOAI 3.4
 - SolrJ 9.5, aligned with LA Referencia Platform
 - Solr 9.8 runtime and integration tests
 

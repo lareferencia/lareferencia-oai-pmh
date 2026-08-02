@@ -64,6 +64,4 @@
    
  </fields>
  <uniqueKey>item.handle</uniqueKey>
- <defaultSearchField>item.handle</defaultSearchField>
- <solrQueryParser defaultOperator="OR"/>
 </schema>

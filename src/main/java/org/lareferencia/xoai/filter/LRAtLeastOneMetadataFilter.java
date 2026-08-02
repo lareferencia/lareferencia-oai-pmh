@@ -29,11 +29,9 @@ import com.lyncode.xoai.dataprovider.xml.xoaiconfig.parameters.ParameterMap;
 import com.lyncode.xoai.dataprovider.xml.xoaiconfig.parameters.ParameterValue;
 import com.lyncode.xoai.dataprovider.xml.xoaiconfig.parameters.SimpleType;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.solr.client.solrj.util.ClientUtils;
-import org.dspace.core.Constants;
 import org.lareferencia.xoai.Context;
 import org.lareferencia.xoai.data.RepostioryItem;
 import org.lareferencia.xoai.exceptions.InvalidMetadataFieldException;
@@ -225,8 +223,7 @@ public class LRAtLeastOneMetadataFilter extends LRFilter {
                 this.buildQuery("metadata." + field,
                         ClientUtils.escapeQueryChars(v), parts);
             if (parts.size() > 0) {
-                return new SolrFilterResult(StringUtils.join(parts.iterator(),
-                        " OR "));
+                return new SolrFilterResult(String.join(" OR ", parts));
             }
         }
         return new SolrFilterResult();

@@ -24,13 +24,7 @@ package org.lareferencia.xoai.filter;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.dspace.authorize.AuthorizeException;
-import org.dspace.authorize.AuthorizeManager;
-import org.dspace.content.Bundle;
-import org.dspace.content.Item;
-import org.dspace.core.Constants;
 import org.lareferencia.xoai.Context;
-import org.dspace.handle.HandleManager;
 import org.lareferencia.xoai.data.RepostioryItem;
 import org.lareferencia.xoai.filter.results.DatabaseFilterResult;
 import org.lareferencia.xoai.filter.results.SolrFilterResult;

@@ -24,7 +24,6 @@ package org.lareferencia.xoai.services.impl.solr;
 import com.lyncode.xoai.dataprovider.filter.Scope;
 import com.lyncode.xoai.dataprovider.filter.ScopedFilter;
 import com.lyncode.xoai.dataprovider.filter.conditions.Condition;
-import org.apache.commons.lang.StringUtils;
 
 import org.lareferencia.xoai.services.api.solr.SolrQueryResolver;
 import org.lareferencia.xoai.services.api.xoai.LRFilterResolver;
@@ -46,7 +45,7 @@ public class LRSolrQueryResolver implements SolrQueryResolver {
 
         if (whereCond.isEmpty())
             whereCond.add("*:*");
-        String where = "(" + StringUtils.join(whereCond.iterator(), ") AND (") + ")";
+        String where = "(" + String.join(") AND (", whereCond) + ")";
 
         return where;
     }

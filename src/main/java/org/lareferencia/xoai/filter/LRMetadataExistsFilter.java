@@ -27,7 +27,6 @@ import com.lyncode.xoai.dataprovider.xml.xoaiconfig.parameters.SimpleType;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.dspace.core.Constants;
 import org.lareferencia.xoai.Context;
 import org.lareferencia.xoai.data.RepostioryItem;
 import org.lareferencia.xoai.exceptions.InvalidMetadataFieldException;

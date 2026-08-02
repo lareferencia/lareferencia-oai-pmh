@@ -25,7 +25,6 @@ import com.lyncode.xoai.dataprovider.services.api.ItemRepository;
 
 import org.apache.solr.client.solrj.SolrServerException;
 
-import org.lareferencia.xoai.services.api.cache.XOAIItemCacheService;
 import org.lareferencia.xoai.services.api.config.ConfigurationService;
 
 import org.lareferencia.xoai.services.api.context.ContextService;
@@ -52,8 +51,6 @@ public class LRItemRepositoryResolver implements ItemRepositoryResolver {
     SolrClientResolver solrServerResolver;
     @Autowired
     SolrQueryResolver solrQueryResolver;
-    @Autowired
-    
 //    DatabaseQueryResolver databaseQueryResolver;
 //    @Autowired
 //   
@@ -63,8 +60,6 @@ public class LRItemRepositoryResolver implements ItemRepositoryResolver {
 //    private HandleResolver handleResolver;
 //    @Autowired
     
-    private XOAIItemCacheService cacheService;
-
     private ItemRepository itemRepository;
 
 

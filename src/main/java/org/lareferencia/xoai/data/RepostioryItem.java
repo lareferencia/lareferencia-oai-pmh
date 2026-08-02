@@ -124,7 +124,7 @@ public abstract class RepostioryItem implements Item
         @Override
         public boolean apply(Element arg0) {
             if (name == null) return false;
-            else if (name.equals(org.dspace.content.Item.ANY)) return true;
+            else if (name.equals("*")) return true;
             else return (name.toLowerCase().equals(arg0.getName().toLowerCase()));
         }
     }

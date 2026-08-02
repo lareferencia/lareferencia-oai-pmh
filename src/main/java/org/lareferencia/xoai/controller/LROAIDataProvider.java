@@ -21,7 +21,6 @@
  *******************************************************************************/
 package org.lareferencia.xoai.controller;
 
-import com.hp.hpl.jena.reasoner.ValidityReport.Report;
 import com.lyncode.xoai.dataprovider.OAIDataProvider;
 import com.lyncode.xoai.dataprovider.OAIRequestParameters;
 import com.lyncode.xoai.dataprovider.core.XOAIManager;

@@ -23,9 +23,7 @@ package org.lareferencia.xoai.app;
 
 import org.apache.log4j.Logger;
 import org.lareferencia.xoai.services.api.cache.XOAICacheService;
-//import org.lareferencia.xoai.services.api.cache.XOAIItemCacheService;
 //import org.lareferencia.xoai.services.api.cache.XOAILastCompilationCacheService;
-import org.lareferencia.xoai.services.api.cache.XOAIItemCacheService;
 import org.lareferencia.xoai.services.api.cache.XOAILastCompilationCacheService;
 import org.lareferencia.xoai.services.api.config.ConfigurationService;
 import org.lareferencia.xoai.services.api.config.XOAIManagerResolver;
@@ -37,7 +35,6 @@ import org.lareferencia.xoai.services.api.xoai.ItemRepositoryResolver;
 import org.lareferencia.xoai.services.api.xoai.LRFilterResolver;
 import org.lareferencia.xoai.services.api.xoai.SetRepositoryResolver;
 import org.lareferencia.xoai.services.impl.cache.LREmptyCacheService;
-import org.lareferencia.xoai.services.impl.cache.LRXOAIItemCacheService;
 import org.lareferencia.xoai.services.impl.cache.LRXOAILastCompilationCacheService;
 import org.lareferencia.xoai.services.impl.config.LRConfigurationService;
 import org.lareferencia.xoai.services.impl.context.LRContextService;
@@ -98,12 +95,6 @@ public class BasicConfiguration {
     public XOAILastCompilationCacheService xoaiLastCompilationCacheService () {
         return new LRXOAILastCompilationCacheService();
     }
-
-    @Bean
-    public XOAIItemCacheService xoaiItemCacheService () {
-        return new LRXOAIItemCacheService();
-    }
-
 
     @Bean
     public ResourceResolver resourceResolver() {

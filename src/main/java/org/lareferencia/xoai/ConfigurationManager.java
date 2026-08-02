@@ -26,16 +26,14 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
-import org.apache.log4j.helpers.OptionConverter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Class for reading the system configuration. The main configuration is
@@ -59,8 +57,7 @@ import org.apache.log4j.helpers.OptionConverter;
  */
 public class ConfigurationManager
 {
-    /** log4j category */
-    private static Logger log = Logger.getLogger(ConfigurationManager.class);
+    private static final Logger log = LoggerFactory.getLogger(ConfigurationManager.class);
 
     /** The configuration properties */
     private static Properties properties = null;
@@ -722,67 +719,9 @@ public class ConfigurationManager
             }
         }
 
-        try
+        if (ConfigurationManager.getProperty("log.init.config") != null)
         {
-            /*
-             * Initialize Logging once ConfigurationManager is initialized.
-             *
-             * This is controlled by a property in xoai.cfg.  If the property
-             * is absent then nothing will be configured and the application
-             * will use the defaults provided by log4j.
-             *
-             * Property format is:
-             *
-             * log.init.config = ${xoai.dir}/config/log4j.properties
-             * or
-             * log.init.config = ${xoai.dir}/config/log4j.xml
-             *
-             * See default log4j initialization documentation here:
-             * http://logging.apache.org/log4j/docs/manual.html
-             *
-             * If there is a problem with the file referred to in
-             * "log.configuration", it needs to be sent to System.err
-             * so do not instantiate another Logging configuration.
-             *
-             */
-            String dsLogConfiguration = ConfigurationManager.getProperty("log.init.config");
-
-            if (dsLogConfiguration == null || System.getProperty("xoai.log.init.disable") != null)
-            {
-                /*
-                 * Do nothing if log config not set in xoai.cfg or "xoai.log.init.disable"
-                 * system property set.  Leave it upto log4j to properly init its logging
-                 * via classpath or system properties.
-                 */
-                info("Using default log4j provided log configuration." +
-                        "  If unintended, check your xoai.cfg for (log.init.config)");
-            }
-            else
-            {
-                info("Using xoai provided log configuration (log.init.config)");
-
-
-                File logConfigFile = new File(dsLogConfiguration);
-
-                if(logConfigFile.exists())
-                {
-                    info("Loading: " + dsLogConfiguration);
-
-                    OptionConverter.selectAndConfigure(logConfigFile.toURI()
-                            .toURL(), null, org.apache.log4j.LogManager
-                            .getLoggerRepository());
-                }
-                else
-                {
-                    info("File does not exist: " + dsLogConfiguration);
-                }
-            }
-
-        }
-        catch (MalformedURLException e)
-        {
-            fatal("Can't load provided log4j configuration", e);
-            throw new IllegalStateException("Cannot load provided log4j configuration",e);
+            info("Ignoring legacy log.init.config; logging is managed by Spring Boot");
         }
 
     }
@@ -910,79 +849,22 @@ public class ConfigurationManager
 
     private static void info(String string)
     {
-        if (!isLog4jConfigured())
-        {
-            System.out.println("INFO: " + string);
-        }
-        else
-        {
-            log.info(string);
-        }
+        log.info(string);
     }
 
     private static void warn(String string)
     {
-        if (!isLog4jConfigured())
-        {
-            System.out.println("WARN: " + string);
-        }
-        else
-        {
-            log.warn(string);
-        }
+        log.warn(string);
     }
 
     private static void fatal(String string, Exception e)
     {
-        if (!isLog4jConfigured())
-        {
-            System.out.println("FATAL: " + string);
-            e.printStackTrace();
-        }
-        else
-        {
-            log.fatal(string, e);
-        }
+        log.error(string, e);
     }
 
     private static void fatal(String string)
     {
-        if (!isLog4jConfigured())
-        {
-            System.out.println("FATAL: " + string);
-        }
-        else
-        {
-            log.fatal(string);
-        }
-    }
-
-    /*
-     * Only current solution available to detect
-     * if log4j is truly configured.
-     */
-    private static boolean isLog4jConfigured()
-    {
-        Enumeration<?> en = org.apache.log4j.LogManager.getRootLogger()
-                .getAllAppenders();
-
-        if (!(en instanceof org.apache.log4j.helpers.NullEnumeration))
-        {
-            return true;
-        }
-        else
-        {
-            Enumeration<?> cats = Category.getCurrentCategories();
-            while (cats.hasMoreElements())
-            {
-                Category c = (Category) cats.nextElement();
-                if (!(c.getAllAppenders() instanceof org.apache.log4j.helpers.NullEnumeration))
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
+        log.error(string);
     }
 
 }

@@ -244,16 +244,16 @@ public class LRAtLeastOneMetadataFilter extends LRFilter {
                 parts.add("(" + field + ":" + value + ")");
                 break;
             case GREATER:
-                parts.add("(" + field + ":[" + value + " TO *])");
+                parts.add("(" + field + ":{" + value + " TO *])");
                 break;
             case LOWER:
-                parts.add("(" + field + ":[* TO " + value + "])");
+                parts.add("(" + field + ":[* TO " + value + "})");
                 break;
             case LOWER_OR_EQUAL:
-                parts.add("(-(" + field + ":[" + value + " TO *]))");
+                parts.add("(" + field + ":[* TO " + value + "])");
                 break;
             case GREATER_OR_EQUAL:
-                parts.add("(-(" + field + ":[* TO " + value + "]))");
+                parts.add("(" + field + ":[" + value + " TO *])");
                 break;
             case CONTAINS:
             default:

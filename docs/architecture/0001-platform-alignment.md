@@ -72,9 +72,11 @@ Lucene 9.8 and point-based numeric and date fields.
 
 XOAI 3.2.10 remains temporarily isolated behind its required JAXB 2.3 runtime
 and a Log4j-to-SLF4J bridge. The provider no longer depends on DSpace 5.1; its
-request context and filters now contain only provider-owned behavior. Replacing
-or modernizing XOAI, producing the runtime image and integrating the provider
-into Platform remain separate follow-up phases. Platform has not been modified
+request context and filters now contain only provider-owned behavior. A
+multi-stage Eclipse Temurin 17 image packages only the provider, runs as a
+non-root user and exposes Actuator health probes. Solr remains a separate 9.8
+service. Replacing or modernizing XOAI and integrating the provider into
+Platform remain separate follow-up phases. Platform has not been modified
 during this phase.
 
 ## Consequences

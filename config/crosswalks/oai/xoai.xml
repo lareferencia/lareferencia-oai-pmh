@@ -16,7 +16,7 @@
     <Contexts>
         <Context baseurl="request" name="Default Context">
             <!-- Restrict access to hidden items by default -->
-            <!-- Filter ref="defaultFilter" /-->
+            <Filter ref="defaultFilter"/>
 
             <Format ref="oaidc"/>
             <Format ref="mets"/>

@@ -21,8 +21,6 @@
  *******************************************************************************/
 package org.lareferencia.xoai.services.impl.xoai;
 
-import com.google.common.base.Function;
-import com.lyncode.builder.ListBuilder;
 import com.lyncode.xoai.dataprovider.core.ListItemIdentifiersResult;
 import com.lyncode.xoai.dataprovider.core.ListItemsResults;
 import com.lyncode.xoai.dataprovider.data.Item;
@@ -109,14 +107,7 @@ public class LRItemSolrRepository extends LRItemRepository
         try
         {
             QueryResult queryResult = retrieveItems(filters, offset, length);
-            List<ItemIdentifier> identifierList = new ListBuilder<Item>()
-                    .add(queryResult.getResults())
-                    .build(new Function<Item, ItemIdentifier>() {
-                        @Override
-                        public ItemIdentifier apply(Item elem) {
-                            return elem;
-                        }
-                    });
+            List<ItemIdentifier> identifierList = new ArrayList<>(queryResult.getResults());
             return new ListItemIdentifiersResult(queryResult.hasMore(), identifierList, queryResult.getTotal());
         }
         catch (LRSolrException ex)

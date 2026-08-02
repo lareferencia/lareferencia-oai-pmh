@@ -112,14 +112,6 @@
 			<version>${solr.version}</version>
 		</dependency>
 
-		<!-- Utilities -->
-		<dependency>
-			<groupId>com.lyncode</groupId>
-			<artifactId>builder-commons</artifactId>
-			<version>1.0.2</version>
-		</dependency>
-
-
 	</dependencies>
 
 	<build>

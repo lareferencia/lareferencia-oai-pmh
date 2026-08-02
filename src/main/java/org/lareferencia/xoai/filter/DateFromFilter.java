@@ -21,7 +21,6 @@
  *******************************************************************************/
 package org.lareferencia.xoai.filter;
 
-import com.lyncode.builder.DateBuilder;
 import com.lyncode.xoai.dataprovider.services.api.DateProvider;
 import com.lyncode.xoai.dataprovider.services.impl.BaseDateProvider;
 import org.apache.solr.client.solrj.util.ClientUtils;
@@ -31,6 +30,7 @@ import org.lareferencia.xoai.filter.results.DatabaseFilterResult;
 import org.lareferencia.xoai.filter.results.SolrFilterResult;
 
 import java.util.Date;
+import java.time.temporal.ChronoUnit;
 
 /**
  * 
@@ -42,7 +42,7 @@ public class DateFromFilter extends LRFilter {
 
     public DateFromFilter(Date date)
     {
-        this.date = new DateBuilder(date).setMinMilliseconds().build();
+        this.date = Date.from(date.toInstant().truncatedTo(ChronoUnit.SECONDS));
     }
 
 //    @Override

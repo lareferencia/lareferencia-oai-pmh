@@ -21,9 +21,6 @@
  *******************************************************************************/
 package org.lareferencia.xoai.data;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Collections2;
-import com.google.common.collect.Lists;
 import com.lyncode.xoai.dataprovider.data.About;
 import com.lyncode.xoai.dataprovider.data.Item;
 import com.lyncode.xoai.dataprovider.xml.xoai.Element;
@@ -41,7 +38,14 @@ import java.util.regex.Pattern;
 public abstract class RepostioryItem implements Item
 {
 	private static List<Element> filter (List<Element> input, String name) {
-    	return Lists.newArrayList(Collections2.filter(input, new MetadataNamePredicate(name)));
+		List<Element> matches = new ArrayList<>();
+		if (name == null) return matches;
+		for (Element element : input) {
+			if (name.equals("*") || name.equalsIgnoreCase(element.getName())) {
+				matches.add(element);
+			}
+		}
+		return matches;
     }
     
     private static List<Element> flat (List<Element> input) {
@@ -114,18 +118,4 @@ public abstract class RepostioryItem implements Item
     	return buildIdentifier(getHandle());
     }
 
-    private static class MetadataNamePredicate implements Predicate<Element> {
-        private String name;
-
-        public MetadataNamePredicate (String n) {
-            name = n;
-        }
-
-        @Override
-        public boolean apply(Element arg0) {
-            if (name == null) return false;
-            else if (name.equals("*")) return true;
-            else return (name.toLowerCase().equals(arg0.getName().toLowerCase()));
-        }
-    }
 }

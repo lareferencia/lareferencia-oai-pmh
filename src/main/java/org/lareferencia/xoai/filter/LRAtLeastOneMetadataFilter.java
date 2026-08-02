@@ -22,8 +22,6 @@
 
 package org.lareferencia.xoai.filter;
 
-import com.google.common.base.Function;
-import com.lyncode.builder.ListBuilder;
 import com.lyncode.xoai.dataprovider.xml.xoaiconfig.parameters.ParameterList;
 import com.lyncode.xoai.dataprovider.xml.xoaiconfig.parameters.ParameterMap;
 import com.lyncode.xoai.dataprovider.xml.xoaiconfig.parameters.ParameterValue;
@@ -77,14 +75,9 @@ public class LRAtLeastOneMetadataFilter extends LRFilter {
                 values = new ArrayList<String>();
                 values.add(((SimpleType) parameterValue).asString());
             } else if (parameterValue instanceof ParameterList) {
-                values = new ListBuilder<ParameterValue>()
-                        .add(parameterValue.asParameterList().getValues())
-                        .build(new Function<ParameterValue, String>() {
-                            @Override
-                            public String apply(ParameterValue elem) {
-                                return elem.asSimpleType().asString();
-                            }
-                        });
+                values = parameterValue.asParameterList().getValues().stream()
+                        .map(elem -> elem.asSimpleType().asString())
+                        .toList();
             } else values = new ArrayList<String>();
         }
         return values;

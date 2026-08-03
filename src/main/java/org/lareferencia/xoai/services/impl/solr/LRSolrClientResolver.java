@@ -43,8 +43,20 @@ public class LRSolrClientResolver implements SolrClientResolver {
     @Autowired
     private ConfigurationService configurationService;
 
-    @Value( "${solr.url:null}" )
+    @Value( "${solr.url:}" )
     private String solrUrl;
+
+    String resolveSolrUrl() {
+        if (solrUrl != null && !solrUrl.isBlank()) {
+            return solrUrl.trim();
+        }
+
+        String legacySolrUrl = configurationService.getProperty("solr.url");
+        if (legacySolrUrl == null || legacySolrUrl.isBlank()) {
+            throw new IllegalStateException("Solr URL is not configured");
+        }
+        return legacySolrUrl.trim();
+    }
 
     @Override
     public SolrClient getClient() throws SolrServerException
@@ -54,9 +66,7 @@ public class LRSolrClientResolver implements SolrClientResolver {
             try
             {
 
-                if ( solrUrl == null || solrUrl.equals("null") ) {
-                    solrUrl = configurationService.getProperty("solr.url");
-                }
+                solrUrl = resolveSolrUrl();
 
                 System.out.println("Connecting to Solr Server " + solrUrl + " ...");
                 log.info("Connecting to Solr Server: "  + solrUrl + " ...");

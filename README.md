@@ -33,21 +33,31 @@ therefore require a working Docker engine.
 
 Application defaults are packaged in
 `src/main/resources/application.properties`. Spring Boot configuration can be
-overridden with environment variables or an external
-`config/application.properties` file.
+overridden with environment variables or a local `config/application.properties`
+created from the versioned model:
+
+```bash
+cp config/application.properties.model config/application.properties
+```
+
+The generated file is intentionally ignored by Git so deployment-specific
+values remain local.
 
 | Property | Environment variable | Default |
 | --- | --- | --- |
 | `server.port` | `SERVER_PORT` | `8092` |
-| `solr.url` | `SOLR_URL` | `http://localhost:8983/solr/oai` |
-| `xoai.config.path` | `XOAI_CONFIG_PATH` | `config/xoai.config` |
+| `solr.url` | `SOLR_URL` | `http://localhost:8080/solr/oai` |
+| `xoai.config.path` | `XOAI_CONFIG_PATH` | Model, or `config/application.properties` after setup |
 
 Use the standard `JAVA_TOOL_OPTIONS` environment variable when JVM flags are
 needed in a container.
 
-Repository identity, metadata formats and crosswalks are configured in
-`config/xoai.config` and `config/crosswalks/`. Treat these files as part of the
-provider compatibility contract when customizing an installation.
+Spring Boot settings, repository identity and XOAI paths share the generated
+`config/application.properties` file. Its versioned source is
+`config/application.properties.model`. Metadata formats and crosswalks remain in
+`config/crosswalks/`. `SOLR_URL` and other Spring environment variables override
+the corresponding file values. Treat this configuration as part of the provider
+compatibility contract when customizing an installation.
 
 ## Run the JAR
 

@@ -31,7 +31,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(classes = MainApp.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
-        properties = "xoai.config.path=config/xoai.config")
+        properties = "xoai.config.path=config/application.properties.model")
 class OaiProtocolIntegrationTest {
 
     private static final String HANDLE = "20.500.12345/public+record";

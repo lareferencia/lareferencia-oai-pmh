@@ -1,10 +1,28 @@
-#rest port
+# Spring Boot runtime
 server.port=8092
-#server.servlet.context-path=/
 server.forward-headers-strategy=framework
-xoai.config.path=config/xoai.config
 management.endpoints.web.exposure.include=health,info
 management.endpoint.health.probes.enabled=true
 
-# Base solr index
-solr.url=http://localhost:8983/solr/oai
+# After copying this model, Spring and XOAI load the same effective file.
+xoai.config.path=config/application.properties
+
+# Solr storage. SOLR_URL overrides this value through Spring Boot.
+storage=solr
+solr.url=http://localhost:8080/solr/oai
+
+# XOAI installation and repository identity
+xoai.dir=config
+repository.name=XOAI at my National Network
+mail.admin=admin@mail.com
+
+# Retained for legacy XOAI descriptive configuration. Record identifiers remain
+# the repository handles and are not rewritten with this prefix.
+identifier.prefix=localhost
+
+# Metadata descriptions and crosswalks
+config.dir=${xoai.dir}/crosswalks/oai
+description.file=${config.dir}/description.xml
+
+# When enabled, request logging can honor the forwarded client address.
+# useProxies=true

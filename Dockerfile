@@ -23,11 +23,13 @@ WORKDIR /app
 
 COPY --from=build /workspace/target/lareferencia-oai-pmh-*.jar /app/oai-pmh.jar
 COPY --chown=provider:provider config /app/config
+RUN cp /app/config/application.properties.model /app/config/application.properties \
+    && chown provider:provider /app/config/application.properties
 
 ENV JAVA_TOOL_OPTIONS="" \
     SERVER_PORT=8092 \
     SOLR_URL=http://solr:8983/solr/oai \
-    XOAI_CONFIG_PATH=/app/config/xoai.config
+    XOAI_CONFIG_PATH=/app/config/application.properties
 
 EXPOSE 8092
 

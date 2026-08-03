@@ -5,9 +5,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ master ]
+    branches: [ main, master ]
 
 jobs:
   build:
@@ -27,7 +27,7 @@ jobs:
         distribution: temurin
         cache: maven
     - name: Build with Maven
-      run: bash build.sh
+      run: ./mvnw --batch-mode clean verify -Dmaven.javadoc.skip=true
     - name: Build install package
       if: matrix.java == 17
       run: tar cvfz oai-pmh.tgz oai-pmh.* config

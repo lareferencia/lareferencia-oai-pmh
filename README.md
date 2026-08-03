@@ -21,11 +21,13 @@ Use the included Maven wrapper:
 
 ```bash
 ./mvnw --batch-mode clean test
+./mvnw --batch-mode clean verify
 ./mvnw --batch-mode clean package -DskipTests
 ```
 
-Integration tests start Solr 9.8 with Testcontainers, so a working Docker engine
-is required for the complete test suite.
+`test` and `build.sh` run the unit suite and do not require Docker. `verify` also
+runs the `*IntegrationTest` classes, which start Solr 9.8 with Testcontainers and
+therefore require a working Docker engine.
 
 ## Configuration
 

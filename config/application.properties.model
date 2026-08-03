@@ -6,6 +6,7 @@ management.endpoint.health.probes.enabled=true
 
 # After copying this model, Spring and XOAI load the same effective file.
 xoai.config.path=config/application.properties
+xoai.static.path=static
 
 # Solr storage. SOLR_URL overrides this value through Spring Boot.
 storage=solr

@@ -24,6 +24,8 @@ package org.lareferencia.xoai.app;
 
 import static java.lang.Integer.MAX_VALUE;
 
+import java.nio.file.Path;
+
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 
@@ -55,6 +57,9 @@ public class MainApp implements WebMvcConfigurer {
 	
 	@Value( "${xoai.config.path}" )
 	private String config_file_path;
+
+	@Value("${xoai.static.path:static}")
+	private String staticPath;
 
 	public static void main(String[] args) {
 		
@@ -98,8 +103,22 @@ public class MainApp implements WebMvcConfigurer {
     
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        Path staticRoot = Path.of(staticPath).toAbsolutePath().normalize();
+
+        addStaticResourceHandler(registry, staticRoot, "xslt");
+        addStaticResourceHandler(registry, staticRoot, "css");
+        addStaticResourceHandler(registry, staticRoot, "js");
+        addStaticResourceHandler(registry, staticRoot, "img");
+        addStaticResourceHandler(registry, staticRoot, "fonts");
+
         registry.addResourceHandler("/static/**")
-                .addResourceLocations("/static/")
+                .addResourceLocations(staticRoot.toUri().toString())
+                .setCachePeriod(MAX_VALUE);
+    }
+
+    private void addStaticResourceHandler(ResourceHandlerRegistry registry, Path staticRoot, String directory) {
+        registry.addResourceHandler("/" + directory + "/**")
+                .addResourceLocations(staticRoot.resolve(directory).toUri().toString())
                 .setCachePeriod(MAX_VALUE);
     }
 

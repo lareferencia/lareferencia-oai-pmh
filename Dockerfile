@@ -23,6 +23,7 @@ WORKDIR /app
 
 COPY --from=build /workspace/target/lareferencia-oai-pmh-*.jar /app/oai-pmh.jar
 COPY --chown=provider:provider config /app/config
+COPY --chown=provider:provider static /app/static
 RUN cp /app/config/application.properties.model /app/config/application.properties \
     && chown provider:provider /app/config/application.properties
 

@@ -25,16 +25,15 @@ import com.lyncode.xoai.dataprovider.core.ResumptionToken;
 import com.lyncode.xoai.dataprovider.exceptions.BadResumptionToken;
 import com.lyncode.xoai.dataprovider.services.api.ResumptionTokenFormatter;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.lareferencia.xoai.util.DateUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 
 
 public class LRResumptionTokenFormatter implements ResumptionTokenFormatter {
-    private static Logger log = LogManager
-            .getLogger(LRResumptionTokenFormatter.class);
+    private static final Logger log = LoggerFactory.getLogger(LRResumptionTokenFormatter.class);
 
     public LRResumptionTokenFormatter() {
     }
@@ -54,7 +53,7 @@ public class LRResumptionTokenFormatter implements ResumptionTokenFormatter {
                 Date until = res[2].equals("") ? null : DateUtils.parse(res[2]);
                 return new ResumptionToken(offset, prefix, set, from, until);
             } catch (Exception e) {
-                log.error(e.getMessage(), e);
+                log.debug("Rejected malformed OAI resumption token", e);
                 throw new BadResumptionToken();
             }
         }

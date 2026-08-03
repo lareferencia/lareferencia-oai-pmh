@@ -36,79 +36,8 @@
             </Description>
         </Context>
 
-        <!--
-            Driver Guidelines:
-
-            - http://www.driver-support.eu/documents/DRIVER_Guidelines_v2_Final_2008-11-13.pdf
-
-            Page 57 - 58
-         -->
-        <Context baseurl="driver" name="Driver Context">
-            <!-- Date format, field prefixes, etc are ensured by the transformer -->
-            <!-- Transformer ref="driverTransformer"/ -->
-            <!-- The driver filter -->
-            <Filter ref="driverFilter"/>
-            <!-- Just an alias, in fact it returns all items within the driver context -->
-            <Set ref="driverSet"/>
-            <!-- Metadata Formats -->
-            <Format ref="oaidc"/>
-            <Format ref="mets"/>
-            <Format ref="didl"/>
-            <Description>
-                This contexts complies with Driver rules.
-            </Description>
-        </Context>
-
-        <!--
-            OpenAIRE Guidelines 1.1:
-
-            - http://www.openaire.eu/en/component/attachments/download/79%E2%8C%A9=en
-
-            There is a limitation over the embargoedEndDate parameter:
-
-            - Predefined DSpace fields don't allow to set this up with a default.
-         -->
-        <Context baseurl="openaire" name="OpenAIRE Context">
-            <!-- Date format, field prefixes, etc are ensured by the transformer -->
-            <!-- Transformer ref="openaireTransformer"/-->
-            <!-- OpenAIRE filter -->
-            <Filter ref="openAireFilter"/>
-            <!-- Just an alias, in fact it returns all items within the driver context -->
-            <Set ref="openaireSet"/>
-            <!-- Metadata Formats -->
-            <Format ref="oaidc"/>
-            <Format ref="mets"/>
-            <Description>
-                This contexts complies with OpenAIRE rules.
-            </Description>
-        </Context>
-        
-        <Context baseurl="thesis" name="Doctoral and Master Thesis Context">
-            <!-- Date format, field prefixes, etc are ensured by the transformer -->
-            <!-- Transformer ref="openaireTransformer"/-->
-            
-            <!-- OpenAIRE filter -->
-            <Filter ref="thesisFilter"/>
-            
-            <!-- Just an alias, in fact it returns all items within the driver context -->
-            <!-- Metadata Formats -->
-            <Format ref="oaidc"/>
-            <Format ref="xoai"/>
-            <Format ref="mets"/>
-            <Description>
-                This contexts lists master and doctoral thesis types
-            </Description>
-        </Context>
-        
         <Context baseurl="lareferencia" name="LAReferencia Accepted Doctypes Context">
-            <!-- Date format, field prefixes, etc are ensured by the transformer -->
-            <!-- Transformer ref="openaireTransformer"/-->
-            
-            <!-- OpenAIRE filter -->
             <Filter ref="lareferenciaFilter"/>
-            
-            <!-- Just an alias, in fact it returns all items within the driver context -->
-            <!-- Metadata Formats -->
             <Format ref="oaidc"/>
             <Format ref="xoai"/>
             <Format ref="mets"/>
@@ -116,29 +45,17 @@
                LAReferencia Accepted Doctypes Context
             </Description>
         </Context>
-        
-        <!--
-            OpenAIRE Guidelines 4.0:
 
-            - https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/
-
-            There is a limitation over the embargoedEndDate parameter:
-
-            - Predefined DSpace fields don't allow to set this up with a default.
-         -->
-        <Context baseurl="openaire4" name="OpenAIRE 4 Context">
-            <!-- Date format, field prefixes, etc are ensured by the transformer -->
-            <Transformer ref="openaire4Transformer"/>
-            <!-- OpenAIRE filter -->
-            <Filter ref="defaultFilter"/>
-            <!-- Metadata Formats -->
-            <Format ref="oaiopenaire"/>
+        <Context baseurl="thesis" name="Doctoral and Master Thesis Context">
+            <Filter ref="thesisFilter"/>
+            <Format ref="oaidc"/>
+            <Format ref="xoai"/>
+            <Format ref="mets"/>
             <Description>
-                This contexts complies with OpenAIRE Guidelines for Literature Repositories v4.0.
+                This context lists master and doctoral thesis types.
             </Description>
-        </Context>		
-        
-        
+        </Context>
+
     </Contexts>
 
 

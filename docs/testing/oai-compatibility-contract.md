@@ -52,10 +52,12 @@ other normalization is introduced by this migration. Given the handle
 ## Required test layers
 
 1. Unit tests for filters, identifier lookup and token formatting.
-2. Repository tests against a Solr Testcontainer using the canonical OAI core.
+2. Repository tests against a Solr Testcontainer using the provider's own Solr 9.8-aligned OAI core copy (`lareferencia-oai-pmh/solr.core/oai`); the canonical core in `lareferencia-solr-cores/oai` is still legacy (`LUCENE_42`) and not Solr 9-aligned (see ADR 0001).
 3. HTTP tests for every OAI verb and error response.
 4. Offline XML Schema validation for representative successful and error OAI
    envelopes. Community metadata payloads are validated separately against each
    configured format schema.
 5. Differential tests comparing normalized responses from the old and migrated
    providers against the same read-only Solr dataset.
+
+   > Status (2026-09-23): layer 5 is **pending** — differential tests are not implemented yet.

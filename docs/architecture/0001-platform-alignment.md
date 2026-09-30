@@ -84,6 +84,12 @@ only the provider, runs as a non-root user and exposes Actuator health probes.
 Solr remains a separate 9.8 service. Integrating the provider into Platform
 remains a follow-up phase. Platform has not been modified during this phase.
 
+> **Addendum (2026-09-23):** the integration follow-up phase has since happened — the provider is
+> now built by the platform Maven reactor, runs as a Docker compose service and is registered in
+> `workspace.ini`/`modules.txt`. Two clarifications: the canonical `oai` core in `lareferencia-solr-cores`
+> is still legacy `LUCENE_42` and not Solr 9-aligned (the Testcontainers suite uses the provider's own
+> `solr.core/oai` copy), and the image runs as a non-root user with Actuator health probes.
+
 ## Consequences
 
 The migration deliberately favors protocol compatibility over internal API

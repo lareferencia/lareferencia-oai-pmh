@@ -95,6 +95,14 @@ class OaiProtocolIntegrationTest {
                 .body(org.hamcrest.Matchers.not(containsString("20.500.12345/private")));
     }
 
+    @Test
+    void rejectsPrivateRecordLookupAndReportsStoredEarliestDate() {
+        request("GetRecord", "metadataPrefix", "oai_dc", "identifier", "20.500.12345/private")
+                .then().statusCode(200).body(containsString("<error code=\"idDoesNotExist\""));
+        request("Identify").then().statusCode(200)
+                .body(containsString("<earliestDatestamp>2026-08-02T10:15:30Z</earliestDatestamp>"));
+    }
+
     private void assertVerb(String verb, String parameter, String value) throws Exception {
         Response response = parameter == null
                 ? request(verb)

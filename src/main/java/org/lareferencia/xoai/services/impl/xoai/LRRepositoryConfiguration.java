@@ -56,14 +56,16 @@ public class LRRepositoryConfiguration implements RepositoryConfiguration
     private String name = null;
     private String baseUrl = null;
     private Context context;
+    private final org.apache.solr.client.solrj.SolrClient solrClient;
    
 
     private ConfigurationService configurationService;
 
-    public LRRepositoryConfiguration( ConfigurationService configurationService, Context context)
+    public LRRepositoryConfiguration( ConfigurationService configurationService, Context context, org.apache.solr.client.solrj.SolrClient solrClient)
     {
         this.configurationService = configurationService;
         this.context = context;
+        this.solrClient = solrClient;
     }
 
     @Override
@@ -111,23 +113,17 @@ public class LRRepositoryConfiguration implements RepositoryConfiguration
     @Override
     public Date getEarliestDate()
     {
-        // Look at the database!
-//        try
-//        {
-//            return dateResolver.getEarliestDate(context);
-//        }
-//        catch (SQLException e)
-//        {
-//            log.error(e.getMessage(), e);
-//        }
-//        catch (InvalidMetadataFieldException e)
-//        {
-//            log.error(e.getMessage(), e);
-//        }
-    	
-    	// FIXME: Tal vez lo más prolijo sea mirar el indice solr?
-    	
-        return new Date();
+        org.apache.solr.client.solrj.SolrQuery query = new org.apache.solr.client.solrj.SolrQuery("item.public:true AND item.lastmodified:[* TO *]");
+        query.setRows(1);
+        query.setFields("item.lastmodified");
+        query.setSort("item.lastmodified", org.apache.solr.client.solrj.SolrQuery.ORDER.asc);
+        try {
+            org.apache.solr.common.SolrDocumentList documents = solrClient.query(query).getResults();
+            // An empty repository has no stored datestamp; use a stable lower bound.
+            return documents.isEmpty() ? new Date(0) : (Date) documents.get(0).getFieldValue("item.lastmodified");
+        } catch (org.apache.solr.client.solrj.SolrServerException | IOException e) {
+            throw new IllegalStateException("Unable to obtain earliest OAI datestamp from Solr", e);
+        }
     }
 
     @Override

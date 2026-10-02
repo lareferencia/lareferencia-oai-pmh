@@ -24,213 +24,74 @@ package org.lareferencia.xoai.services.impl.xoai;
 import com.lyncode.xoai.dataprovider.core.ListSetsResult;
 import com.lyncode.xoai.dataprovider.core.Set;
 import com.lyncode.xoai.dataprovider.services.api.SetRepository;
-
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
-import org.apache.solr.client.solrj.SolrResponse;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.FacetField;
-import org.apache.solr.client.solrj.response.FacetField.Count;
 import org.apache.solr.client.solrj.response.QueryResponse;
-import org.apache.solr.common.util.NamedList;
 import org.lareferencia.xoai.data.RepositorySet;
 import org.lareferencia.xoai.services.api.solr.SolrClientResolver;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.io.IOException;
-import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
-/**
- * 
- * @author Lyncode Development Team <dspace@lyncode.com>
- */
-public class LRSetRepository implements SetRepository
-{
-    private static final Logger log = LogManager.getLogger(LRSetRepository.class);
+/** Solr sets, loaded once per repository instance (one HTTP request). */
+public class LRSetRepository implements SetRepository {
+    private final SolrClient solrServer;
+    private List<Set> sets;
 
-    //private final Context _context;
-    
-    SolrClient solrServer;
-    
-
-    public LRSetRepository(SolrClientResolver solrServerResolver)
-    {
-       // _context = context;
-    	try {
-			solrServer = solrServerResolver.getClient();
-		} catch (SolrServerException e) {
-			log.error(e.getMessage(), e);
-		}
-    	
-        
-    }
-    
-    
-    private List<FacetField.Count> getFacetValues(String facetFieldName) {
-    	
-    	
-       try {
-    	
-    	SolrQuery query = new SolrQuery("*:*");
-			query.setRows(0);
-			query.setFacet(true);
-			query.addFacetField(facetFieldName);
-			query.setFacetLimit(-1);
-			
-			QueryResponse response = solrServer.query( query );
-					
-			return response.getFacetFields().get(0).getValues();
-		
-       
-       } catch (SolrServerException | IOException e) {
-			
-     	log.error(e.getMessage(), e);  
-     	  
-			e.printStackTrace();
-		}
-       
-       List<FacetField.Count> list = new ArrayList<FacetField.Count>();
-       
-       return list;  	
+    public LRSetRepository(SolrClientResolver resolver) {
+        try {
+            solrServer = resolver.getClient();
+        } catch (SolrServerException e) {
+            throw new IllegalStateException("Unable to initialize Solr set repository", e);
+        }
     }
 
-    private int getCommunityCount()
-    {  		
-        return getFacetValues("item.communities").size();
-    }
-
-    private int getCollectionCount()
-    {
-    	
-        return getFacetValues("item.collections").size();
-    }
-
-    /**
-     * Produce a list of DSpaceCommunitySet.  The list is a segment of the full
-     * list of Community ordered by ID.
-     *
-     * @param offset start this far down the list of Community.
-     * @param length return up to this many Sets.
-     * @return some Sets representing the Community list segment.
-     */
-    private List<Set> community(int offset, int length)
-    {
-        List<Set> array = new ArrayList<Set>();
-        
-		
-  		for (FacetField.Count count: getFacetValues("item.communities") ) {
-  		    array.add(RepositorySet.newSet(
-  		    		count.getName(),
-  		    		count.getName()));     
-  		}
-                   
-        // FIXME: HACER CONSTANTES PARA LOS VALORES DE LAS FACETAS
-        return array;
-    }
-
-    /**
-     * Produce a list of DSpaceCollectionSet.  The list is a segment of the full
-     * list of Collection ordered by ID.
-     *
-     * @param offset start this far down the list of Collection.
-     * @param length return up to this many Sets.
-     * @return some Sets representing the Collection list segment.
-     */
-    private List<Set> collection(int offset, int length)
-    {
-        List<Set> array = new ArrayList<Set>();	
-				
-		for (FacetField.Count count: getFacetValues("item.collections") ) {
-		    array.add(RepositorySet.newSet(
-		    		count.getName(),
-		    		count.getName()));     
-		}
-             
-        return array;
-    }
-
-    @Override
-    public ListSetsResult retrieveSets(int offset, int length)
-    {
-        // Only database sets (virtual sets are added by lyncode common library)
-        log.debug("Querying sets. Offset: " + offset + " - Length: " + length);
-        List<Set> array = new ArrayList<Set>();
-        
-        int communityCount = this.getCommunityCount();
-        log.debug("Communities: " + communityCount);
-        int collectionCount = this.getCollectionCount();
-        log.debug("Collections: " + collectionCount);
-        
-        // todos los sets son comunity + collection
-        List<Set> tmp = community(0,-1) ;
-        tmp.addAll( collection(0,-1) );
-        if (offset < 0 || length < 0 || offset >= tmp.size())
-            return new ListSetsResult(false, array, tmp.size());
-
-        int end = (int) Math.min((long) offset + length, tmp.size());
-        return new ListSetsResult(end < tmp.size(), tmp.subList(offset, end), tmp.size());
-
-
-        /**
-        if (offset < communityCount)
-        {
-            if (offset + length > communityCount)
-            {
-                // Add some collections
-                List<Set> tmp = community(offset, length);
-                array.addAll(tmp);
-                array.addAll(collection(0, length - tmp.size()));
+    private List<Set> getSets() {
+        if (sets == null) {
+            SolrQuery query = new SolrQuery("item.public:true");
+            query.setRows(0);
+            query.setFacet(true);
+            query.addFacetField("item.communities", "item.collections");
+            query.setFacetLimit(-1);
+            query.setFacetMinCount(1);
+            query.setFacetSort("index");
+            try {
+                QueryResponse response = solrServer.query(query);
+                java.util.Set<String> names = new TreeSet<>();
+                if (response.getFacetFields() != null) {
+                    for (FacetField facet : response.getFacetFields()) {
+                        if (facet.getValues() != null) {
+                            for (FacetField.Count count : facet.getValues()) names.add(count.getName());
+                        }
+                    }
+                }
+                sets = new ArrayList<>();
+                for (String name : names) sets.add(RepositorySet.newSet(name, name));
+            } catch (SolrServerException | IOException e) {
+                throw new IllegalStateException("Unable to retrieve OAI sets from Solr", e);
             }
-            else
-                array.addAll(community(offset, length));
         }
-        else if (offset < communityCount + collectionCount)
-        {
-            array.addAll(collection(offset - communityCount, length));
-        }
-        log.debug("Has More Results: "
-                + ((offset + length < communityCount + collectionCount) ? "Yes"
-                        : "No"));
-        
-        
-         
-        return new ListSetsResult(offset + length < communityCount
-                + collectionCount, array, communityCount + collectionCount);*/
-        
-        
-        
-        // FIXME: Hay que considerar la implementación de la paginación de sets
+        return sets;
     }
 
     @Override
-    public boolean supportSets()
-    {
-        return true;
+    public ListSetsResult retrieveSets(int offset, int length) {
+        List<Set> all = getSets();
+        if (offset < 0 || length <= 0 || offset >= all.size()) {
+            return new ListSetsResult(false, new ArrayList<>(), all.size());
+        }
+        int end = (int) Math.min((long) offset + length, all.size());
+        return new ListSetsResult(end < all.size(), all.subList(offset, end), all.size());
     }
 
     @Override
-    public boolean exists(String setSpec)
-    {
-    	
-    	    boolean found = false;
-        	
-      		for (FacetField.Count count: getFacetValues("item.collections") ) {		
-      			found |= count.getName().equals(setSpec);  
-      		}
-                    
-        	
-      		
-      		for (FacetField.Count count: getFacetValues("item.communities") ) {
-      			found |= count.getName().equals(setSpec);      		  
-      		}
-                            
+    public boolean supportSets() { return true; }
 
-        return found;
+    @Override
+    public boolean exists(String setSpec) {
+        return getSets().stream().anyMatch(set -> setSpec.equals(set.getSetSpec()));
     }
-
 }

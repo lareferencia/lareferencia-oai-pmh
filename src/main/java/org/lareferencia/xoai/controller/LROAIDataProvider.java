@@ -150,6 +150,11 @@ public class LROAIDataProvider
             closeContext(context);
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
                     "Unexpected error while writing the output. For more information visit the log files.");
+        } catch (IllegalStateException e) {
+            log.error("OAI service unavailable", e);
+            if (!response.isCommitted()) {
+                response.sendError(HttpServletResponse.SC_SERVICE_UNAVAILABLE, "OAI service unavailable");
+            }
         } finally {
             closeContext(context);
         }

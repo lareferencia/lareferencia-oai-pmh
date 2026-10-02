@@ -46,6 +46,7 @@ public class LRSolrSearch
         try
         {
             solrParams.setSort("item.id", ORDER.asc);
+            solrParams.addSort("item.handle", ORDER.asc);
             QueryResponse response = server.query(solrParams);
             return response.getResults();
         }
@@ -61,6 +62,7 @@ public class LRSolrSearch
         try
         {
             solrParams.setSort("item.id", ORDER.asc);
+            solrParams.addSort("item.handle", ORDER.asc);
             QueryResponse response = server.query(solrParams);
             if (response.getResults().getNumFound() > 0)
                 return response.getResults().get(0);

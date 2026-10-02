@@ -37,7 +37,7 @@ import org.springframework.beans.factory.annotation.Value;
 public class LRSolrClientResolver implements SolrClientResolver {
     private static Logger log = LogManager.getLogger(LRSolrClientResolver.class);
     //private static SolrServer server = null;
-    private static SolrClient server;
+    private SolrClient server;
     
     
     @Autowired
@@ -58,8 +58,16 @@ public class LRSolrClientResolver implements SolrClientResolver {
         return legacySolrUrl.trim();
     }
 
+    @jakarta.annotation.PreDestroy
+    public synchronized void close() throws java.io.IOException {
+        if (server != null) {
+            server.close();
+            server = null;
+        }
+    }
+
     @Override
-    public SolrClient getClient() throws SolrServerException
+    public synchronized SolrClient getClient() throws SolrServerException
     {
         if (server == null)
         {

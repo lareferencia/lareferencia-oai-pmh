@@ -71,6 +71,7 @@ public class LRItemSolrRepository extends LRItemRepository
 		  {
               SolrQuery params = new SolrQuery("item.handle:\""
                       + ClientUtils.escapeQueryChars(identifier) + "\"");
+              params.addFilterQuery("item.public:true");
 		      return new RepositorySolrItem(LRSolrSearch.querySingle(server, params));
 		  }
 		  catch (SolrSearchEmptyException ex)

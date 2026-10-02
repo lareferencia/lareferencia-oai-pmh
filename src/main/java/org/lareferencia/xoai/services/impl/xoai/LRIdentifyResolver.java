@@ -37,8 +37,15 @@ public class LRIdentifyResolver implements IdentifyResolver {
     @Autowired
     private ContextService contextService;
 
+    @Autowired
+    private org.lareferencia.xoai.services.api.solr.SolrClientResolver solrClientResolver;
+
     @Override
     public RepositoryConfiguration getIdentify() throws ContextServiceException {
-        return new LRRepositoryConfiguration(configurationService, contextService.getContext());
+        try {
+            return new LRRepositoryConfiguration(configurationService, contextService.getContext(), solrClientResolver.getClient());
+        } catch (org.apache.solr.client.solrj.SolrServerException e) {
+            throw new ContextServiceException(e.getMessage(), e);
+        }
     }
 }

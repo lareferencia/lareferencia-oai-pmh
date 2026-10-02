@@ -47,6 +47,7 @@ public class RepositorySolrItem extends RepostioryItem
     private Date lastMod;
     private List<ReferenceSet> sets;
     private boolean deleted;
+    private boolean publicItem;
     
     public RepositorySolrItem (SolrDocument doc) {
     	log.debug("Creating OAI Item from Solr source");
@@ -54,14 +55,24 @@ public class RepositorySolrItem extends RepostioryItem
         handle = (String) doc.getFieldValue("item.handle");
         lastMod = (Date) doc.getFieldValue("item.lastmodified");
         sets = new ArrayList<ReferenceSet>();
-        for (Object obj : doc.getFieldValues("item.communities"))
+        for (Object obj : values(doc, "item.communities"))
             sets.add(new ReferenceSet((String) obj));
-        for (Object obj : doc.getFieldValues("item.collections"))
+        for (Object obj : values(doc, "item.collections"))
             sets.add(new ReferenceSet((String) obj));
-        deleted = (Boolean) doc.getFieldValue("item.deleted");
+        deleted = Boolean.TRUE.equals(doc.getFieldValue("item.deleted"));
+        publicItem = Boolean.TRUE.equals(doc.getFieldValue("item.public"));
     }
     
     
+    private static java.util.Collection<Object> values(SolrDocument doc, String field) {
+        java.util.Collection<Object> values = doc.getFieldValues(field);
+        return values == null ? java.util.Collections.emptyList() : values;
+    }
+
+    public boolean isPublic() {
+        return publicItem;
+    }
+
     public String removeSurrogates(String query) {
     	
         StringBuilder sb = new StringBuilder();

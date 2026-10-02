@@ -87,7 +87,8 @@ public class LRAuthorizationFilter extends LRFilter
         return false;*/
     	
     	// TODO: Dummy return
-    	return true;
+        return item instanceof org.lareferencia.xoai.data.RepositorySolrItem
+                && ((org.lareferencia.xoai.data.RepositorySolrItem) item).isPublic();
     }
 
     @Override

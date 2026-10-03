@@ -12,3 +12,4 @@ buildNumber.properties
 .idea/**
 *.jar
 config/application.properties
+.DS_Store

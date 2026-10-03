@@ -4,7 +4,7 @@
 
 Standalone OAI-PMH provider backed by the LA Referencia Solr `oai` core.
 
-The Maven artifact is `org.lareferencia:lareferencia-oai-pmh:5.0.0-rc2`, aligned
+The Maven artifact is `org.lareferencia:lareferencia-oai-pmh:5.0.0-rc3`, aligned
 with the platform release. The provider uses Spring Boot directly as its Maven
 parent so its standalone build and Docker image do not inherit platform-wide
 dependencies or require the platform parent to be published.
@@ -68,7 +68,7 @@ compatibility contract when customizing an installation.
 
 ```bash
 SOLR_URL=http://localhost:8983/solr/oai \
-  java -jar target/lareferencia-oai-pmh-5.0.0-rc2.jar
+  java -jar target/lareferencia-oai-pmh-5.0.0-rc3.jar
 ```
 
 The OAI endpoint is `http://localhost:8092/request` and the health endpoint is

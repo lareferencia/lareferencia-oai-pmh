@@ -1,6 +1,9 @@
 FROM eclipse-temurin:17-jdk-jammy AS build
 
 WORKDIR /workspace
+COPY --from=platform-parent /pom.xml /workspace/pom.xml
+
+WORKDIR /workspace/lareferencia-oai-pmh
 
 COPY .mvn .mvn
 COPY mvnw pom.xml ./
@@ -21,7 +24,7 @@ RUN groupadd --system provider \
 
 WORKDIR /app
 
-COPY --from=build /workspace/target/lareferencia-oai-pmh-*.jar /app/oai-pmh.jar
+COPY --from=build /workspace/lareferencia-oai-pmh/target/lareferencia-oai-pmh-*.jar /app/oai-pmh.jar
 COPY --chown=provider:provider config /app/config
 COPY --chown=provider:provider static /app/static
 RUN cp /app/config/application.properties.model /app/config/application.properties \

@@ -29,6 +29,36 @@ jobs:
         ref: main
         path: .platform-parent
         persist-credentials: false
+    - name: Resolve the matching committed platform parent
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        python3 - <<'PYCODE'
+        import json, subprocess, xml.etree.ElementTree as E
+        from pathlib import Path
+        ns = '{http://maven.apache.org/POM/4.0.0}'
+        version = E.parse('pom.xml').getroot().findtext(ns + 'parent/' + ns + 'version')
+        def git(*args):
+            return subprocess.run(['git', '-C', '.platform-parent', *args], text=True, capture_output=True)
+        def matching(ref):
+            result = git('fetch', 'origin', ref)
+            if result.returncode:
+                return None
+            sha = git('rev-parse', 'FETCH_HEAD').stdout.strip()
+            pom = git('show', sha + ':pom.xml')
+            return sha if E.fromstring(pom.stdout).findtext(ns + 'version') == version else None
+        chosen = matching('refs/tags/' + version) or matching('main')
+        if not chosen:
+            prs = json.loads(subprocess.check_output(['gh', 'pr', 'list', '--repo', 'lareferencia/lareferencia-platform', '--state', 'open', '--json', 'headRefOid'], text=True))
+            candidates = {sha for pr in prs if (sha := matching(pr['headRefOid']))}
+            if len(candidates) != 1:
+                raise SystemExit('Push one coordinator PR with matching parent version before retrying module CI.')
+            chosen = candidates.pop()
+        result = git('checkout', '--detach', chosen)
+        if result.returncode:
+            raise SystemExit(result.stderr)
+        print('Using committed platform parent', version, chosen)
+        PYCODE
     - name: Set up JDK ${{ matrix.java }}
       uses: actions/setup-java@v4
       with:

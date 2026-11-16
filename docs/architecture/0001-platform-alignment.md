@@ -96,3 +96,13 @@ The migration deliberately favors protocol compatibility over internal API
 compatibility. The XOAI modernization and the Solr core validation are explicit
 gates because they carry the greatest risk. Platform's Maven, container and test
 Solr versions must be unified before the final integration pull request.
+
+
+### Coordinated version inheritance
+
+Active platform modules now inherit their project version from
+`org.lareferencia:lareferencia-parent`. OAI-PMH uses that parent rather than
+Spring Boot directly; the platform parent supplies the Boot parent transitively.
+Provider CI installs the platform parent before its standalone build, and the
+provider Docker build receives the same POM as the `platform-parent` named build
+context. The provider's XOAI/JAXB compatibility pins remain provider-specific.

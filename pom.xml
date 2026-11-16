@@ -17,11 +17,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.0</version>
-		<relativePath />
-	</parent>
+        <groupId>org.lareferencia</groupId>
+        <artifactId>lareferencia-parent</artifactId>
+        <version>5.0.0-rc3</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
 
 	<properties>
@@ -40,7 +40,6 @@
 	<artifactId>lareferencia-oai-pmh</artifactId>
 	<name>LA Referencia OAI-PMH Provider</name>
 	<description>LA Referencia OAI-PMH provider App </description>
-	<version>5.0.0-rc3</version>
 
 	<dependencyManagement>
 		<dependencies>

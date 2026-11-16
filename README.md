@@ -4,10 +4,11 @@
 
 Standalone OAI-PMH provider backed by the LA Referencia Solr `oai` core.
 
-The Maven artifact is `org.lareferencia:lareferencia-oai-pmh:5.0.0-rc3`, aligned
-with the platform release. The provider uses Spring Boot directly as its Maven
-parent so its standalone build and Docker image do not inherit platform-wide
-dependencies or require the platform parent to be published.
+The Maven artifact is `org.lareferencia:lareferencia-oai-pmh`. Its version is
+inherited from `org.lareferencia:lareferencia-parent`, which inherits Spring Boot.
+The provider remains independently deployable and shares the platform release
+version. Build it inside the platform workspace or install the matching platform
+parent POM before building the repository separately.
 
 ## Runtime baseline
 
@@ -22,7 +23,19 @@ not add an `oai:` prefix or otherwise rewrite existing identifiers.
 
 ## Build and test
 
-Use the included Maven wrapper:
+From the platform workspace, build and verify the provider with:
+
+```bash
+mvn --batch-mode -pl lareferencia-oai-pmh verify
+```
+
+For a separate provider checkout, first install the matching platform parent:
+
+```bash
+./mvnw --batch-mode -N -f /path/to/lareferencia-platform/pom.xml install
+```
+
+Then use the included Maven wrapper:
 
 ```bash
 ./mvnw --batch-mode clean test
@@ -76,10 +89,12 @@ The OAI endpoint is `http://localhost:8092/request` and the health endpoint is
 
 ## Run with Docker
 
-Build the provider image:
+Build the provider image with the platform parent available as a named build context:
 
 ```bash
-./build_docker_image.sh
+./build_docker_image.sh  # expects the platform pom.xml in ..
+# For another layout:
+# PLATFORM_PARENT_CONTEXT=/path/to/lareferencia-platform ./build_docker_image.sh
 ```
 
 Solr is a separate service. If it is reachable as `solr` on a Docker network:

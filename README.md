@@ -16,7 +16,7 @@ parent POM before building the repository separately.
 - Spring Boot 3.5
 - XOAI 3.4
 - SolrJ 9.5, aligned with LA Referencia Platform
-- Solr 9.8 runtime and integration tests
+- Platform Compose runtime: Solr 9.11; provider integration tests: Solr 9.8
 
 The public OAI identifier remains the repository handle. The modernization does
 not add an `oai:` prefix or otherwise rewrite existing identifiers.
@@ -81,7 +81,7 @@ compatibility contract when customizing an installation.
 
 ```bash
 SOLR_URL=http://localhost:8983/solr/oai \
-  java -jar target/lareferencia-oai-pmh-5.0.0-rc3.jar
+  java -jar target/lareferencia-oai-pmh-5.0.0-rc4.jar
 ```
 
 The OAI endpoint is `http://localhost:8092/request` and the health endpoint is

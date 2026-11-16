@@ -33,7 +33,7 @@
 		<xoai.version>3.4.0</xoai.version>
 		<glassfish-jaxb.version>2.3.8</glassfish-jaxb.version>
 		<solr.version>9.5.0</solr.version>
-		<testcontainers.version>1.20.1</testcontainers.version>
+		<testcontainers.version>1.21.4</testcontainers.version>
 	</properties>
 
 	<groupId>org.lareferencia</groupId>

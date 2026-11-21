@@ -27,6 +27,9 @@ public final class SharedSolrContainer {
     private static GenericContainer<?> createAndStart() {
         GenericContainer<?> container = new GenericContainer<>(DockerImageName.parse("solr:9.8.0"))
                 .withExposedPorts(8983)
+                // Match the platform Solr container. The JVM security manager can block
+                // Jetty's accept thread on a reverse DNS lookup for the Docker client.
+                .withEnv("SOLR_SECURITY_MANAGER_ENABLED", "false")
                 .withCopyFileToContainer(
                         MountableFile.forHostPath(Paths.get("solr.core/oai/conf").toAbsolutePath()),
                         "/opt/oai-config")
